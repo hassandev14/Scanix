@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scanix — Scan Any Document. Anywhere, Anytime.</title>
+<meta name="description" content="Scanix is a document scanner app and a free online PDF toolkit. Scan, convert, merge, split, compress, sign and protect documents right in your browser — no signup, no uploads.">
+<meta name="theme-color" content="#1668E3">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://scanix.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scanix">
+<meta property="og:title" content="Scanix — Scan Any Document. Anywhere, Anytime.">
+<meta property="og:description" content="Free online PDF tools plus a premium document scanner app. Everything runs in your browser.">
+<meta property="og:url" content="https://scanix.app/">
+<meta property="og:image" content="https://scanix.app/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scanix — Scan Any Document. Anywhere, Anytime.">
+<meta name="twitter:description" content="Free online PDF tools plus a premium document scanner app.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231668E3'/%3E%3Cpath d='M9 11V9h3M23 11V9h-3M9 21v2h3M23 21v2h-3' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Crect x='12' y='13' width='8' height='6' rx='1.5' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap"></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://scanix.app/#org",
+      "name": "Scanix",
+      "url": "https://scanix.app/",
+      "slogan": "Scan Any Document. Anywhere, Anytime.",
+      "sameAs": ["https://facebook.com/scanix","https://twitter.com/scanix","https://instagram.com/scanix","https://youtube.com/@scanix"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://scanix.app/#website",
+      "url": "https://scanix.app/",
+      "name": "Scanix",
+      "publisher": {"@id": "https://scanix.app/#org"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://scanix.app/#/tools?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Scanix — Document Scanner",
+      "operatingSystem": "Android, iOS",
+      "applicationCategory": "ProductivityApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "10420"}
+    }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#1668E3; --blue-dark:#0F55BE; --blue-soft:#E8F1FE; --ink:#0E1B2E; --ink-2:#1B2B45;
+  --body:#5C6C86; --line:#E7ECF4; --white:#fff; --soft:#F5F8FE; --navy:#0C1B33;
+  --ok:#16A34A; --amber:#F59E0B; --red:#EF4444; --violet:#7C3AED; --teal:#0D9488; --pink:#EC4899;
+  --r-sm:10px; --r:14px; --r-lg:20px;
+  --shadow:0 1px 2px rgba(16,32,64,.05), 0 8px 24px rgba(16,32,64,.06);
+  --shadow-lg:0 24px 60px rgba(12,32,70,.14);
+  --wrap:1160px; --hdr:68px;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --display:'Poppins','Inter',system-ui,sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--body);background:var(--white);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.22;letter-spacing:-.02em}
+h1{font-size:clamp(2.1rem,5.4vw,3.35rem);font-weight:700}
+h2{font-size:clamp(1.55rem,3.4vw,2.15rem);font-weight:700}
+h3{font-size:1.02rem;font-weight:600}
+p{margin:0}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid rgba(22,104,227,.45);outline-offset:2px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px;top:8px;background:#fff;padding:10px 16px;border-radius:8px;z-index:100}
+.skip:focus{left:16px}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--line)}
+.hdr-in{height:var(--hdr);display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,#3B86F7,#1157CC);display:grid;place-items:center;box-shadow:0 6px 14px rgba(22,104,227,.32)}
+.brand-name{font-family:var(--display);font-weight:700;font-size:1.24rem;color:var(--ink);letter-spacing:-.03em;line-height:1.05}
+.brand-sub{font-size:.665rem;color:var(--body);letter-spacing:.04em;line-height:1.4}
+.nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.nav a.nlink,.nav button.nlink{background:none;border:0;cursor:pointer;padding:9px 13px;border-radius:9px;font-size:.9rem;font-weight:500;color:var(--ink-2);display:inline-flex;align-items:center;gap:5px}
+.nav .nlink:hover{color:var(--blue);background:var(--soft)}
+.nav .nlink.active{color:var(--blue);font-weight:600}
+.dd{position:relative}
+.dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:8px;width:520px;display:grid;grid-template-columns:1fr 1fr;gap:2px;opacity:0;visibility:hidden;transition:.16s}
+.dd:hover .dd-menu,.dd.open .dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dd-menu a{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:10px;color:var(--ink-2);font-size:.86rem;font-weight:500}
+.dd-menu a:hover{background:var(--soft)}
+.dd-menu .di{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto}
+.hdr-cta{flex:0 0 auto;margin-left:8px}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:40px;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);margin:3.5px auto;border-radius:2px;transition:.2s}
+.mobile{display:none;border-top:1px solid var(--line);background:#fff;padding:10px 0 18px}
+.mobile.show{display:block}
+.mobile a{display:block;padding:11px 4px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.mobile .m-sub{padding-left:14px;font-size:.87rem;color:var(--body)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:var(--r-sm);padding:13px 22px;font-weight:600;font-size:.92rem;cursor:pointer;transition:transform .12s ease,box-shadow .2s,background .2s;white-space:nowrap}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(22,104,227,.28)}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-primary[disabled]{background:#9FBEEC;box-shadow:none;cursor:not-allowed;transform:none}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow)}
+.btn-ghost:hover{border-color:#C9D8F2;color:var(--blue)}
+.btn-sm{padding:9px 15px;font-size:.85rem;border-radius:9px}
+.btn-line{background:var(--soft);color:var(--blue);border-color:#D8E5FA}
+.btn-line:hover{background:var(--blue-soft)}
+.btn-sub{background:var(--blue);color:#fff;width:100%;justify-content:center}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(180deg,#EAF2FE 0%,#F4F8FF 62%,#FDFEFF 100%);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-140px;top:-190px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9),rgba(219,234,254,.25));pointer-events:none}
+.hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center;padding:62px 0 70px;position:relative}
+.pill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #D9E7FB;color:var(--blue);font-size:.755rem;font-weight:600;padding:7px 13px;border-radius:999px;box-shadow:0 4px 12px rgba(22,104,227,.08)}
+.hero h1{margin:20px 0 0}
+.hero h1 .accent{color:var(--blue);display:block}
+.hero-lede{margin-top:18px;max-width:465px;font-size:1rem}
+.hero-btns{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.stats{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
+.stat{display:flex;align-items:center;gap:10px}
+.stat-ic{width:34px;height:34px;border-radius:10px;background:#fff;display:grid;place-items:center;box-shadow:0 3px 10px rgba(16,32,64,.09)}
+.stat b{display:block;font-family:var(--display);font-size:1rem;color:var(--ink);line-height:1.2}
+.stat span{font-size:.72rem;color:var(--body)}
+.stores{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.store{display:flex;align-items:center;gap:9px;background:#0A0F1C;color:#fff;border-radius:11px;padding:9px 17px;min-width:158px;transition:transform .15s}
+.store:hover{transform:translateY(-2px)}
+.store small{display:block;font-size:.6rem;opacity:.8;line-height:1.3;letter-spacing:.03em;text-transform:uppercase}
+.store b{font-size:.95rem;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+
+/* phone mock */
+.hero-art{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:430px}
+.blob{position:absolute;inset:auto 0 0 0;height:88%;background:linear-gradient(140deg,#DCEAFE,#EFF5FF);border-radius:46% 54% 40% 60%/48% 42% 58% 52%;filter:blur(1px)}
+.dots{position:absolute;right:6px;top:38px;width:74px;height:74px;background-image:radial-gradient(#B9CFF2 1.6px,transparent 1.6px);background-size:12px 12px;opacity:.85}
+.phone{position:relative;width:245px;background:#111827;border-radius:34px;padding:9px;box-shadow:var(--shadow-lg);z-index:2}
+.phone-scr{background:#F6F9FF;border-radius:27px;overflow:hidden;padding:11px 10px 0}
+.ph-top{display:flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;color:var(--ink);margin-bottom:9px}
+.ph-top .sp{margin-left:auto;display:flex;gap:5px}
+.ph-card{background:linear-gradient(120deg,#1668E3,#3D8BF8);border-radius:14px;padding:12px;color:#fff;display:flex;gap:8px;align-items:center}
+.ph-card b{font-size:.78rem;display:block;line-height:1.25;font-family:var(--display)}
+.ph-card span{font-size:.58rem;opacity:.9;line-height:1.4;display:block;margin-top:3px}
+.ph-card .mini{width:52px;height:38px;border-radius:7px;background:#fff;flex:0 0 auto;display:grid;place-items:center}
+.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
+.ph-tile{background:#fff;border:1px solid #EAF0FA;border-radius:11px;padding:9px 4px;text-align:center;font-size:.53rem;font-weight:600;color:var(--ink-2)}
+.ph-tile i{display:grid;place-items:center;margin-bottom:4px}
+.ph-recent{display:flex;justify-content:space-between;align-items:center;font-size:.6rem;font-weight:600;color:var(--ink);margin:11px 0 6px}
+.ph-recent span{color:var(--blue);font-size:.55rem}
+.ph-row{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:7px 9px;margin-bottom:6px}
+.ph-row .thumb{width:22px;height:26px;border-radius:4px;background:#EEF3FC;border:1px solid #E2EAF7;flex:0 0 auto}
+.ph-row b{font-size:.58rem;color:var(--ink);display:block;line-height:1.3;font-family:var(--sans);font-weight:600}
+.ph-row small{font-size:.5rem;color:var(--body)}
+.ph-row .dots3{margin-left:auto;color:#9AA9C0;letter-spacing:1px;font-size:.6rem}
+.paper{position:absolute;left:-6px;top:64px;width:132px;height:166px;background:#fff;border-radius:8px;box-shadow:0 16px 34px rgba(12,32,70,.16);transform:rotate(-11deg);padding:16px 13px;z-index:1}
+.paper::after{content:"CONTRACT";position:absolute;left:13px;top:44px;font-family:var(--display);font-weight:700;font-size:.72rem;color:#94A3B8;letter-spacing:.06em}
+.paper i{display:block;height:5px;border-radius:3px;background:#EDF1F7;margin-bottom:7px}
+.paper i:nth-child(2){width:72%}.paper i:nth-child(4){width:56%}.paper i:nth-child(6){width:80%}
+.scanner{position:absolute;right:-4px;bottom:16px;width:150px;z-index:1}
+.scan-lid{height:34px;background:linear-gradient(160deg,#22304A,#101A2C);border-radius:9px 9px 3px 3px}
+.scan-body{height:44px;background:linear-gradient(160deg,#2C5CC5,#17398A);border-radius:0 0 11px 11px;position:relative}
+.scan-body::after{content:"";position:absolute;left:14px;right:14px;top:9px;height:5px;background:rgba(255,255,255,.4);border-radius:3px}
+.scan-sheet{position:absolute;left:16px;right:16px;bottom:100%;height:52px;background:#fff;border-radius:5px 5px 0 0;box-shadow:0 -8px 20px rgba(12,32,70,.12);padding:9px}
+.scan-sheet i{display:block;height:4px;background:#E9EEF6;border-radius:3px;margin-bottom:6px}
+.plant{position:absolute;right:-10px;bottom:14px;width:34px;height:34px;border-radius:6px 6px 12px 12px;background:#E9EDF3}
+
+/* ---------- sections ---------- */
+.sec{padding:66px 0}
+.sec-soft{background:var(--soft)}
+.eyebrow{text-align:center;color:var(--blue);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 38px}
+.sec-head h2{margin:10px 0 8px}
+.sec-head p{font-size:.95rem}
+
+/* tool grid */
+.tool-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 14px;text-align:center;transition:transform .16s,box-shadow .2s,border-color .2s;display:block}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#D9E5F8}
+.tcard .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin:0 auto 13px}
+.tcard h3{font-size:.94rem}
+.tcard p{font-size:.775rem;margin-top:4px;color:var(--body)}
+.center{text-align:center;margin-top:30px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.step{text-align:center;position:relative}
+.step .ic{width:58px;height:58px;border-radius:50%;background:var(--blue-soft);display:grid;place-items:center;margin:0 auto 14px;border:5px solid #fff;box-shadow:0 6px 16px rgba(22,104,227,.12)}
+.step h3{font-size:.95rem}
+.step p{font-size:.8rem;margin-top:5px}
+.step:not(:last-child)::after{content:"";position:absolute;top:29px;left:calc(50% + 44px);right:calc(-50% + 44px);border-top:2px dashed #C9D9F2}
+
+/* why */
+.why{display:grid;grid-template-columns:.86fr 1.14fr;gap:44px;align-items:center}
+.why h2{margin:12px 0 20px}
+.eyebrow.left{text-align:left}
+.checks li{display:flex;gap:11px;align-items:flex-start;margin-bottom:12px;font-size:.9rem;color:var(--ink-2)}
+.checks .ck{width:19px;height:19px;border-radius:50%;background:var(--blue);display:grid;place-items:center;flex:0 0 auto;margin-top:3px}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fcard{border-radius:var(--r);padding:22px 15px;text-align:center;border:1px solid rgba(0,0,0,.03)}
+.fcard .ic{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;margin:0 auto 12px;box-shadow:0 4px 12px rgba(16,32,64,.08)}
+.fcard h3{font-size:.9rem}
+.fcard p{font-size:.775rem;margin-top:6px}
+
+/* blog */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:center}
+.post .ph{height:92px;border-radius:11px;background:linear-gradient(140deg,#DCE8FB,#F0F5FF);display:grid;place-items:center;overflow:hidden}
+.post h3{font-size:.9rem;line-height:1.42}
+.post .meta{font-size:.7rem;color:#8492AC;margin:6px 0 8px}
+.post .more{font-size:.79rem;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+
+/* cta band */
+.band{background:linear-gradient(110deg,#1259CE,#2E81F5);border-radius:var(--r-lg);padding:34px 38px;display:grid;grid-template-columns:auto 1fr auto auto;gap:26px;align-items:center;color:#fff;box-shadow:0 22px 44px rgba(18,89,206,.28)}
+.band h2{color:#fff;font-size:1.5rem}
+.band p{font-size:.87rem;opacity:.92;margin-top:7px;max-width:420px}
+.band-mark{width:74px;height:74px;border-radius:18px;background:rgba(255,255,255,.16);display:grid;place-items:center}
+.band .stores{margin:0}
+.band-phone{width:96px;background:#0B1220;border-radius:16px;padding:5px}
+.band-phone div{background:#EEF4FF;border-radius:12px;height:118px;padding:7px}
+.band-phone .b1{background:#1668E3;border-radius:7px;height:44px;margin-bottom:6px}
+.band-phone .b2{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.band-phone .b2 i{height:15px;background:#fff;border-radius:4px;display:block}
+
+/* footer */
+.ftr{background:var(--navy);color:#9FB0CB;padding:52px 0 0;margin-top:0}
+.ftr-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.35fr;gap:28px}
+.ftr h4{color:#fff;font-size:.9rem;margin-bottom:14px;font-family:var(--display);font-weight:600}
+.ftr a{color:#9FB0CB;font-size:.845rem;display:block;padding:4px 0}
+.ftr a:hover{color:#fff}
+.ftr .brand-name{color:#fff}.ftr .brand-sub{color:#8095B4}
+.ftr p.about{font-size:.845rem;margin-top:14px;max-width:270px}
+.socials{display:flex;gap:9px;margin-top:16px}
+.socials a{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.09);display:grid;place-items:center;padding:0}
+.socials a:hover{background:var(--blue)}
+.sub-form{display:flex;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:9px;padding:5px 5px 5px 13px;align-items:center;margin-top:12px}
+.sub-form input{background:none;border:0;outline:none;color:#fff;flex:1;font-size:.83rem;min-width:0}
+.sub-form input::placeholder{color:#7E92B2}
+.ftr .btn-sub{margin-top:9px;padding:10px}
+.ftr-bot{border-top:1px solid rgba(255,255,255,.09);margin-top:38px;padding:18px 0;text-align:center;font-size:.8rem}
+
+/* ---------- tool pages ---------- */
+.page-head{background:linear-gradient(180deg,#EDF4FE,#FBFDFF);border-bottom:1px solid var(--line);padding:34px 0 30px}
+.crumbs{font-size:.78rem;color:var(--body);margin-bottom:12px}
+.crumbs a{color:var(--body)}.crumbs a:hover{color:var(--blue)}
+.page-head-in{display:flex;gap:16px;align-items:center}
+.page-head .ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;flex:0 0 auto}
+.page-head h1{font-size:clamp(1.5rem,3.4vw,2rem)}
+.page-head p{margin-top:6px;font-size:.93rem;max-width:640px}
+.tool-wrap{max-width:820px;margin:0 auto;padding:36px 20px 60px}
+.drop{border:2px dashed #C9D9F2;background:#FAFCFF;border-radius:var(--r-lg);padding:44px 22px;text-align:center;cursor:pointer;transition:.18s}
+.drop:hover,.drop.over{border-color:var(--blue);background:var(--blue-soft)}
+.drop .ic{width:58px;height:58px;border-radius:50%;background:var(--blue-soft);display:grid;place-items:center;margin:0 auto 14px}
+.drop b{display:block;font-family:var(--display);color:var(--ink);font-size:1.02rem}
+.drop small{display:block;margin-top:5px;font-size:.82rem}
+.files{margin-top:20px;display:grid;gap:9px}
+.frow{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff}
+.frow .fi{width:34px;height:34px;border-radius:9px;background:var(--blue-soft);display:grid;place-items:center;flex:0 0 auto}
+.frow b{font-size:.86rem;color:var(--ink);font-weight:600;display:block;word-break:break-all;line-height:1.35}
+.frow small{font-size:.74rem}
+.frow .acts{margin-left:auto;display:flex;gap:4px;flex:0 0 auto}
+.iconbtn{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--body)}
+.iconbtn:hover{color:var(--blue);border-color:#C9D8F2;background:var(--soft)}
+.iconbtn[disabled]{opacity:.35;cursor:not-allowed}
+.opts{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);padding:18px;background:#fff}
+.opts h3{font-size:.86rem;text-transform:uppercase;letter-spacing:.08em;color:var(--body);font-family:var(--sans);font-weight:600;margin-bottom:12px}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:.83rem;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input[type=text],.field input[type=password],.field input[type=number],.field select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.88rem;outline:none;background:#fff}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,104,227,.12)}
+.field .hint{font-size:.76rem;margin-top:5px}
+.segs{display:flex;flex-wrap:wrap;gap:8px}
+.seg{border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 14px;font-size:.83rem;font-weight:500;cursor:pointer;color:var(--ink-2)}
+.seg.on{border-color:var(--blue);background:var(--blue-soft);color:var(--blue);font-weight:600}
+.run{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.note{font-size:.8rem;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:18px;display:flex;gap:9px}
+.bar{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:16px}
+.bar i{display:block;height:100%;background:var(--blue);width:0;border-radius:99px;transition:width .25s}
+.status{font-size:.83rem;margin-top:9px}
+.result{margin-top:20px;border:1px solid #CFEBD8;background:#F4FCF6;border-radius:var(--r);padding:18px}
+.result h3{color:#14713C;font-size:1rem;margin-bottom:4px}
+.result .outs{display:grid;gap:8px;margin-top:14px}
+.out{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #DCEEE3;border-radius:11px;padding:10px 13px}
+.out b{font-size:.85rem;color:var(--ink);word-break:break-all}
+.out small{font-size:.74rem}
+.out .btn{margin-left:auto}
+.err{border:1px solid #F6CFCF;background:#FEF5F5;color:#A02525;border-radius:12px;padding:12px 14px;margin-top:16px;font-size:.85rem}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px;margin-top:18px}
+.thumb-c{border:1px solid var(--line);border-radius:11px;padding:8px;text-align:center;background:#fff;cursor:pointer;position:relative}
+.thumb-c.sel{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,104,227,.14)}
+.thumb-c canvas,.thumb-c img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);transition:transform .2s}
+.thumb-c span{font-size:.72rem;display:block;margin-top:6px}
+textarea.out-text{width:100%;min-height:230px;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.85rem;line-height:1.65;resize:vertical;outline:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.sig-pad{border:1px solid var(--line);border-radius:12px;background:#fff;touch-action:none;width:100%;height:180px;cursor:crosshair}
+.stage{position:relative;display:inline-block;max-width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
+.stage canvas{display:block;max-width:100%;height:auto}
+.stage .ghost{position:absolute;pointer-events:none;border:1.5px dashed var(--blue);background:rgba(22,104,227,.06)}
+
+/* content pages */
+.prose{max-width:760px;margin:0 auto;padding:42px 20px 64px}
+.prose h2{font-size:1.35rem;margin:30px 0 10px}
+.prose h3{font-size:1.02rem;margin:22px 0 8px}
+.prose p{margin-bottom:14px}
+.prose ul{margin:0 0 16px;padding-left:20px;list-style:disc}
+.prose li{margin-bottom:7px}
+.faq{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;overflow:hidden}
+.faq summary{cursor:pointer;padding:14px 16px;font-weight:600;color:var(--ink);font-size:.92rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--blue);font-size:1.1rem}
+.faq[open] summary::after{content:"−"}
+.faq .fa{padding:0 16px 15px;font-size:.88rem}
+.card-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:10px;font-size:.87rem;opacity:0;pointer-events:none;transition:.25s;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:980px){
+  .nav{display:none}.burger{display:block}.hdr-cta{display:none}
+  .hero-in{grid-template-columns:1fr;padding:40px 0 48px}
+  .hero-art{order:-1;min-height:360px}
+  .tool-grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);gap:28px}
+  .step::after{display:none!important}
+  .why{grid-template-columns:1fr;gap:28px}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:1fr}
+  .band{grid-template-columns:1fr;text-align:center;padding:28px 22px}
+  .band .stores{justify-content:center}.band-mark,.band-phone{margin:0 auto}
+  .ftr-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid,.steps{grid-template-columns:1fr}
+  .ftr-grid{grid-template-columns:1fr}
+  .post{grid-template-columns:88px 1fr}
+  .sec{padding:48px 0}
+  .stats{gap:18px}
+  .dd-menu{width:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="app"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript>
+  <div style="max-width:760px;margin:40px auto;padding:0 20px">
+    <h1>Scanix — document scanner and free online PDF tools</h1>
+    <p>Scanix lets you scan, merge, split, compress, rotate, convert, sign and password-protect PDF files. The tools run entirely in your browser, so please enable JavaScript to use them.</p>
+    <p>Tools: OCR, Compress PDF, Split PDF, Merge PDF, Rotate PDF, Image to PDF, PDF to Image, PDF to Word, Lock PDF, eSign PDF.</p>
+  </div>
+</noscript>
+<script>
+/* =========================================================
+   Scanix — single-page app. Everything runs client-side.
+   ========================================================= */
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- icons ---------- */
+const P = {
+  scan:'M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3M7 12h10',
+  text:'M4 7V4h16v3M9 20h6M12 4v16',
+  compress:'M9 9H4M9 9V4M9 9 3 3M15 9h5M15 9V4M15 9l6-6M9 15H4M9 15v5M9 15l-6 6M15 15h5M15 15v5M15 15l6 6',
+  split:'M6 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4M6 16a2 2 0 1 0 0 4 2 2 0 0 0 0-4M8 7l12 10M8 17 20 7',
+  merge:'M7 3v5a3 3 0 0 0 3 3h9M19 11l-3-3M19 11l-3 3M7 21v-5',
+  rotate:'M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6',
+  image:'M3 5h18v14H3zM8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M21 16l-5-5-11 8',
+  file:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6',
+  lock:'M5 11h14v10H5zM8 11V7a4 4 0 1 1 8 0v4',
+  pen:'M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z',
+  check:'M20 6 9 17l-5-5',
+  down:'M12 3v12M7 11l5 5 5-5M4 21h16',
+  shield:'M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z',
+  spark:'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
+  cloud:'M6.5 18a4 4 0 0 1 .6-8 5.5 5.5 0 0 1 10.6 1.3A3.5 3.5 0 0 1 17.5 18z',
+  bolt:'M13 2 4 14h7l-1 8 9-12h-7z',
+  share:'M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M12 3v13M8 7l4-4 4 4',
+  folder:'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z',
+  cam:'M4 8h3l2-2h6l2 2h3v11H4zM12 16.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
+  trash:'M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13',
+  arrow:'M5 12h14M13 6l6 6-6 6',
+  chev:'M6 9l6 6 6-6',
+  up:'M18 15l-6-6-6 6',
+  upload:'M12 20V8M7 12l5-5 5 5M5 20h14',
+  copy:'M9 9h10v11H9zM5 15H4V4h11v1',
+  x:'M6 6l12 12M18 6 6 18',
+  star:'M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z',
+  sort:'M8 4v16M8 20l-4-4M16 20V4M16 4l4 4',
+  eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
+  users:'M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 20v-2a4 4 0 0 0-3-3.9',
+  mail:'M3 6h18v12H3zM3 7l9 6 9-6',
+  book:'M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2zM8 3v18'
+};
+function ic(n, size, color, w) {
+  return '<svg viewBox="0 0 24 24" width="' + (size || 20) + '" height="' + (size || 20) + '" fill="none" stroke="' + (color || 'currentColor') +
+    '" stroke-width="' + (w || 1.9) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + P[n] + '"/></svg>';
+}
+const SOCIAL = {
+  facebook:'<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.2-1.5 1.5-1.5H16.6V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V10.5H7.5v3h2.7V21z"/></svg>',
+  twitter:'<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 3H21l-6.6 7.5L22 21h-6l-4.7-6.1L5.8 21H3.7l7-8L3 3h6.2l4.2 5.6zm-1 16.7h1.2L8.3 4.2H7z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  youtube:'<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8M10.2 15V9l5.2 3z"/></svg>'
+};
+const PLAY = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3.6 2.3 13.4 12 3.6 21.7A1.6 1.6 0 0 1 3 20.5V3.5c0-.5.2-.9.6-1.2" fill="#34A853"/><path d="M3.6 2.3 13.4 12l2.8-2.8-11-6.3a1.6 1.6 0 0 0-1.6-.6" fill="#4285F4"/><path d="m13.4 12 2.8 2.8-11 6.3c-.6.3-1.2.2-1.6-.4z" fill="#EA4335"/><path d="m16.2 9.2 3.4 1.9c.9.5.9 1.3 0 1.8l-3.4 1.9L13.4 12z" fill="#FBBC04"/></svg>';
+const APPLE = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.7.9s-1.9-.9-3.2-.9c-1.6 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.4-1-2.3-3.2M14 5.2c.7-.8 1.1-1.9 1-3-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.5"/></svg>';
+
+/* ---------- data ---------- */
+const TOOLS = [
+  { slug:'ocr', name:'OCR', tag:'Image / PDF to Text', icon:'text', c:'#1668E3', bg:'#E8F1FE',
+    title:'OCR online — turn images and PDFs into editable text',
+    desc:'Extract text from photos, scans and PDF files in your browser. Free, no signup, nothing leaves your device.',
+    intro:'Pull the words out of a photo, screenshot or scanned PDF and get plain text you can edit, search and paste anywhere.',
+    faqs:[['Which languages are supported?','English is loaded by default. Pick another language from the list before you run it and the matching model is fetched once, then cached by your browser.'],
+          ['Why is my result messy?','Recognition follows image quality. Shoot straight on, fill the frame with the page, avoid shadows, and use at least 300 DPI when you scan.'],
+          ['Can it read handwriting?','Not reliably. The engine is trained on printed type. Neat block capitals sometimes work; cursive rarely does.']] },
+  { slug:'compress-pdf', name:'Compress PDF', tag:'Reduce PDF file size', icon:'compress', c:'#F05252', bg:'#FDECEC',
+    title:'Compress PDF — shrink PDF file size online',
+    desc:'Make a PDF smaller so it fits an upload limit or email attachment. Choose how hard to squeeze and see the saving before you download.',
+    intro:'Rebuild each page as an optimised image at the quality you pick. Best for scans and image-heavy files that are too big to send.',
+    faqs:[['How much smaller will my file get?','Scans and photo-heavy PDFs often drop 60–90%. A file that is already plain text may barely change, because there is little left to remove.'],
+          ['Will the text stay selectable?','No. Compression flattens each page to an image, so text becomes part of the picture. Run OCR afterwards if you need selectable text.'],
+          ['Is there a file size limit?','Only what your device can hold in memory. Very large files are slower because every page is re-rendered.']] },
+  { slug:'split-pdf', name:'Split PDF', tag:'Split PDF into parts', icon:'split', c:'#7C3AED', bg:'#F1EAFE',
+    title:'Split PDF — separate pages or extract a range',
+    desc:'Cut a PDF into single pages or pull out the pages you need. Downloads arrive as a ZIP or as one trimmed PDF.',
+    intro:'Break a long document into pieces, or lift out just the pages that matter and keep them in one file.',
+    faqs:[['How do I write a page range?','Use commas and dashes, like 1-3, 7, 10-12. Spaces are ignored and pages are numbered from 1.'],
+          ['Do I get one file or many?','Split every page gives you a ZIP with one PDF per page. Extract a range gives you a single PDF containing those pages in order.'],
+          ['Are bookmarks kept?','Page content, links and annotations are copied. Document-level bookmarks are not carried across.']] },
+  { slug:'merge-pdf', name:'Merge PDF', tag:'Combine multiple PDFs', icon:'merge', c:'#16A34A', bg:'#E7F7EC',
+    title:'Merge PDF — combine PDF files into one',
+    desc:'Join two or more PDFs into a single document. Reorder the files first, then download the result.',
+    intro:'Put a set of PDFs together in the order you choose and get back one clean document.',
+    faqs:[['How many files can I merge?','As many as your device can hold. Twenty ordinary documents merge in a moment.'],
+          ['Can I change the order?','Yes. Use the arrows on each row to move a file up or down before merging.'],
+          ['Are page sizes normalised?','No. Every page keeps its original size and rotation, so a mix of A4 and Letter stays exactly as it was.']] },
+  { slug:'rotate-pdf', name:'Rotate PDF', tag:'Rotate or reorder pages', icon:'rotate', c:'#F97316', bg:'#FEEEE2',
+    title:'Rotate PDF — fix sideways and upside-down pages',
+    desc:'Turn every page or only the ones you select, then save the corrected PDF.',
+    intro:'Straighten pages that came out of the scanner sideways. Preview each one, pick the ones to turn, and save.',
+    faqs:[['Does rotating reduce quality?','No. Only the page rotation flag changes; the page content is untouched.'],
+          ['Can I rotate one page only?','Yes. Click a page thumbnail to select it. With nothing selected, the rotation applies to every page.'],
+          ['Will the rotation stick in other apps?','Yes. It is written into the file itself, so any standard PDF reader shows it the same way.']] },
+  { slug:'image-to-pdf', name:'Image to PDF', tag:'JPG / PNG to PDF', icon:'image', c:'#EC4899', bg:'#FDEAF3',
+    title:'Image to PDF — convert JPG and PNG to PDF',
+    desc:'Turn photos and screenshots into a single PDF. Choose page size, orientation and margin.',
+    intro:'Drop in a stack of images and get one PDF, in the order you arrange them.',
+    faqs:[['Which image formats work?','JPG, PNG and WebP. Each image becomes one page.'],
+          ['Can I keep the original photo size?','Yes. Choose "Fit to image" and each page matches its picture exactly, with no white borders.'],
+          ['Are photos re-compressed?','JPEGs are embedded as they are. PNG and WebP images are converted to JPEG at high quality so the PDF stays a sensible size.']] },
+  { slug:'pdf-to-image', name:'PDF to Image', tag:'Convert PDF to image', icon:'cam', c:'#0D9488', bg:'#E2F5F3',
+    title:'PDF to image — export PDF pages as PNG or JPG',
+    desc:'Render each page of a PDF as an image at the resolution you choose, then download them together.',
+    intro:'Get a picture of every page, ready to drop into a slide, a chat or a website.',
+    faqs:[['Which resolution should I pick?','96 DPI is fine on screen. 150 DPI suits documents you will read closely. 300 DPI is print quality and makes much larger files.'],
+          ['PNG or JPG?','PNG for text and line art, where sharp edges matter. JPG for photo-heavy pages, where the file size matters more.'],
+          ['Can I export just one page?','Yes. Convert the file, then download only the pages you want, or grab everything as a ZIP.']] },
+  { slug:'pdf-to-word', name:'PDF to Word', tag:'Convert PDF to Word', icon:'file', c:'#2563EB', bg:'#E8EEFE',
+    title:'PDF to Word — get an editable document from a PDF',
+    desc:'Pull the text out of a PDF and download it as a .doc file you can open and edit in Word, Pages or Google Docs.',
+    intro:'Recover the words from a PDF so you can edit them, with paragraphs and page breaks kept in place.',
+    faqs:[['Is the layout preserved?','Text, paragraph order and page breaks are kept. Multi-column layouts, tables and precise positioning are not rebuilt.'],
+          ['What about scanned PDFs?','A scan holds pictures, not text, so nothing comes out. Run OCR first, then paste that text into your document.'],
+          ['Why .doc and not .docx?','The .doc file produced here is a formatted document that Word, Pages, LibreOffice and Google Docs all open and edit normally. Save as .docx from there if you need it.']] },
+  { slug:'lock-pdf', name:'Lock PDF', tag:'Password protect PDF', icon:'lock', c:'#F59E0B', bg:'#FEF3DC',
+    title:'Lock PDF — add a password to a PDF file',
+    desc:'Encrypt a PDF with 128-bit standard security so it cannot be opened without the password.',
+    intro:'Set a password on a document before you send it. The file is encrypted on your device, so the password never travels anywhere.',
+    faqs:[['What encryption is used?','The PDF standard security handler with a 128-bit RC4 key, revision 3 — the format every PDF reader supports without extra software.'],
+          ['Can you recover a lost password?','No. The password is never stored or sent anywhere. If you lose it, the file cannot be opened.'],
+          ['Does it work on phones?','Yes. Any reader that supports encrypted PDFs will ask for the password, including iOS Files and Android viewers.']] },
+  { slug:'esign-pdf', name:'eSign PDF', tag:'Sign PDF Online', icon:'pen', c:'#6D5AE6', bg:'#ECEAFD',
+    title:'eSign PDF — sign a PDF in your browser',
+    desc:'Draw or type your signature, place it on the page and download the signed PDF.',
+    intro:'Sign a contract without printing it. Draw your name, drop it where it belongs, save.',
+    faqs:[['Is my signature stored?','No. It exists only in this tab and disappears when you close it.'],
+          ['Is this legally binding?','An electronic signature is accepted in many places, including under the US ESIGN Act and eIDAS in the EU. Requirements vary by country and contract, so check what your situation needs.'],
+          ['Can I add a date or initials?','Yes. Type any text in the signature box, place it, then repeat for a second mark before you download.']] }
+];
+const T = {}; TOOLS.forEach(t => T[t.slug] = t);
+
+const POSTS = [
+  { slug:'scan-documents-on-mobile', title:'How to Scan Documents on Mobile Like a Pro', date:'May 20, 2026', cat:'Tips', tint:'#DDE9FC',
+    excerpt:'Nine habits that turn a phone camera into a scanner good enough for a bank, a landlord or a tax office.',
+    body:`<p>A phone camera and a flatbed scanner capture the same page, but they fail in different ways. The scanner controls the light and the distance for you. On a phone, both are yours to manage, and almost every bad scan comes down to one of them.</p>
+<h2>Light beats megapixels</h2><p>Put the page near a window, side-on rather than facing the sun. Overhead room lights throw your own shadow across the paper, which is the single most common reason a scan comes back grey and blotchy. If you must use the flash, hold the phone further back and zoom in, so the light spreads instead of blowing out the centre.</p>
+<h2>Shoot square to the page</h2><p>Hold the phone parallel to the paper, not tilted over it. Perspective correction can rescue a small angle, but stretching a badly skewed photo smears the letters, and OCR accuracy falls off quickly once that happens.</p>
+<h2>Fill the frame</h2><p>Leave a small border around the page and nothing more. Every pixel spent on your desk is a pixel not spent on the text.</p>
+<h2>Pick the right output</h2><ul><li>Black and white for plain text: smallest file, sharpest letters.</li><li>Greyscale for pages with photographs or stamps.</li><li>Colour only when the colour carries meaning, such as a signature in blue ink or a highlighted clause.</li></ul>
+<h2>Check before you send</h2><p>Zoom to 100% on the smallest text in the document. If you cannot read it comfortably on screen, neither can the person receiving it, and neither can an OCR engine. Reshoot rather than send.</p>
+<h2>Name files so you can find them</h2><p>A name like <code>2026-05-invoice-acme.pdf</code> sorts itself chronologically and survives being emailed around. <code>scan_0043.pdf</code> does not.</p>` },
+  { slug:'pdf-tools-you-should-use', title:'Top 7 PDF Tools You Should Use Every Day', date:'May 18, 2026', cat:'Tools', tint:'#FCE4E4',
+    excerpt:'Merge, split, compress, rotate, convert, sign, protect — the small operations that remove most PDF friction.',
+    body:`<p>Most PDF frustration comes from a handful of repeated tasks. Learn these seven and the format stops getting in your way.</p>
+<h2>1. Merge</h2><p>One application, one file. Combine the form, the ID and the proof of address before you send them, instead of making the reader open three attachments.</p>
+<h2>2. Split</h2><p>The opposite move, and just as useful. Send only the two pages that matter rather than the whole 90-page report.</p>
+<h2>3. Compress</h2><p>Upload portals still cap attachments at 2, 5 or 10 MB. Compressing a scan usually clears the limit in one pass.</p>
+<h2>4. Rotate</h2><p>Sideways pages read fine on a laptop, where you can turn the view, and terribly on a printout. Fix it at the source.</p>
+<h2>5. Image to PDF</h2><p>Photos of receipts scattered through a camera roll are hard to submit. One PDF, in date order, is easy.</p>
+<h2>6. eSign</h2><p>Printing a contract to sign it, then scanning it back, degrades the document and wastes fifteen minutes. Place the signature directly on the page instead.</p>
+<h2>7. Lock</h2><p>Payslips, medical letters and contracts pass through inboxes that are not always private. A password costs you a few seconds.</p>
+<p>All seven run in this browser tab, on your device, with no account and no upload.</p>` },
+  { slug:'keep-your-documents-safe', title:'Keep Your Documents Safe: Best Practices', date:'May 15, 2026', cat:'Security', tint:'#E3EEF9',
+    excerpt:'Where scanned documents actually leak, and the handful of habits that close most of the gaps.',
+    body:`<p>A scanned passport is more dangerous than the physical one, because a copy can be in a hundred places at once and you will never know. Treat the file with the same care as the document.</p>
+<h2>Know where processing happens</h2><p>Many online converters upload your file to a server, process it there and promise to delete it later. That promise may well be kept, but it is still a copy on someone else's disk. Tools that run in the browser never send the file at all — worth checking before you hand over anything sensitive.</p>
+<h2>Redact properly</h2><p>Drawing a black box over a number in an image editor and saving as PDF hides it visually while leaving the text underneath, where anyone can select and copy it. Remove the content, then flatten the page to an image, then check by trying to select the text.</p>
+<h2>Password-protect what you send</h2><p>Email is a series of hops between servers. Encrypt the attachment and send the password by a different channel, such as a text message. A password in the same email as the file protects nothing.</p>
+<h2>Prune your camera roll</h2><p>Photos of ID documents linger in cloud backups for years. Once the scan is filed, delete the original photo from the phone and from the deleted items folder.</p>
+<h2>Strip metadata when it matters</h2><p>A PDF can carry the author name, the software used and the creation date. Rarely a problem, occasionally revealing. Check the document properties before publishing something publicly.</p>` }
+];
+const PB = {}; POSTS.forEach(p => PB[p.slug] = p);
+
+/* ---------- shell ---------- */
+function logo(dark) {
+  return '<a class="brand" href="#/" aria-label="Scanix home"><span class="brand-mark">' + ic('scan', 20, '#fff', 2.1) +
+    '</span><span><span class="brand-name">Scanix</span><span class="brand-sub">Premium Document Scanner</span></span></a>';
+}
+const NAV = [['Home','#/'],['Features','#/features'],['Tools','#/tools'],['Blog','#/blog'],['About Us','#/about'],['Contact','#/contact']];
+
+function header(route) {
+  const dd = TOOLS.map(t => '<a href="#/tools/' + t.slug + '"><span class="di" style="background:' + t.bg + '">' +
+    ic(t.icon, 15, t.c) + '</span>' + t.name + '</a>').join('');
+  const links = NAV.map(n => {
+    if (n[0] === 'Tools') return '<span class="dd"><a class="nlink' + (route.indexOf('tools') === 0 ? ' active' : '') +
+      '" href="#/tools">Tools ' + ic('chev', 14) + '</a><div class="dd-menu">' + dd + '</div></span>';
+    const act = ('#/' + route) === n[1] || (route === '' && n[1] === '#/');
+    return '<a class="nlink' + (act ? ' active' : '') + '" href="' + n[1] + '">' + n[0] + '</a>';
+  }).join('');
+  return '<header class="hdr"><div class="wrap hdr-in">' + logo() +
+    '<nav class="nav" aria-label="Main">' + links + '</nav>' +
+    '<a class="btn btn-primary btn-sm hdr-cta" href="#/download">Download App ' + ic('down', 15, '#fff') + '</a>' +
+    '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
+    '</div><div class="mobile wrap" id="mobile">' +
+      NAV.map(n => '<a href="' + n[1] + '">' + n[0] + '</a>').join('') +
+      TOOLS.map(t => '<a class="m-sub" href="#/tools/' + t.slug + '">' + t.name + '</a>').join('') +
+      '<a class="btn btn-primary" style="margin-top:14px" href="#/download">Download App</a></div></header>';
+}
+
+function footer() {
+  const col = (h, items) => '<div><h4>' + h + '</h4>' + items.map(i => '<a href="' + i[1] + '">' + i[0] + '</a>').join('') + '</div>';
+  return '<footer class="ftr"><div class="wrap"><div class="ftr-grid">' +
+    '<div>' + logo(1) + '<p class="about">Scanix is your all-in-one document scanner app. Scan, convert, manage and share your documents easily.</p>' +
+    '<div class="socials">' + Object.keys(SOCIAL).map(k => '<a href="#/contact" aria-label="' + k + '">' + SOCIAL[k] + '</a>').join('') + '</div></div>' +
+    col('Quick Links', [['Home','#/'],['Features','#/features'],['Tools','#/tools'],['Blog','#/blog'],['About Us','#/about'],['Contact','#/contact']]) +
+    col('Tools', [['OCR','#/tools/ocr'],['Compress PDF','#/tools/compress-pdf'],['Merge PDF','#/tools/merge-pdf'],['PDF to Word','#/tools/pdf-to-word'],['All Tools','#/tools']]) +
+    col('Support', [['Help Center','#/help'],['Privacy Policy','#/privacy'],['Terms & Conditions','#/terms'],['Contact Us','#/contact']]) +
+    '<div><h4>Newsletter</h4><p style="font-size:.845rem">Subscribe to get tips, updates and offers.</p>' +
+    '<div class="sub-form"><label class="sr-only" for="nl">Email address</label><input id="nl" type="email" placeholder="Enter your email" autocomplete="email">' +
+    ic('mail', 16) + '</div><button class="btn btn-sub" id="subBtn">Subscribe</button></div>' +
+    '</div><div class="ftr-bot">© 2026 Scanix. All Rights Reserved.</div></div></footer>';
+}
+
+/* ---------- home ---------- */
+function toolCard(t) {
+  return '<a class="tcard" href="#/tools/' + t.slug + '"><span class="ic" style="background:' + t.bg + '">' + ic(t.icon, 23, t.c) +
+    '</span><h3>' + t.name + '</h3><p>' + t.tag + '</p></a>';
+}
+function phoneMock() {
+  const tile = (i, l, c) => '<div class="ph-tile"><i>' + ic(i, 15, c) + '</i>' + l + '</div>';
+  const row = (n, d) => '<div class="ph-row"><span class="thumb"></span><span><b>' + n + '</b><small>' + d + '</small></span><span class="dots3">•••</span></div>';
+  return '<div class="hero-art"><span class="blob"></span><span class="dots"></span>' +
+    '<div class="paper"><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
+    '<div class="scanner"><div class="scan-lid"></div><div class="scan-body"><div class="scan-sheet"><i></i><i></i><i style="width:60%"></i></div></div></div>' +
+    '<div class="phone"><div class="phone-scr">' +
+      '<div class="ph-top">' + ic('scan', 14, '#1668E3') + ' Scanix <span class="sp">' + ic('folder', 13, '#8FA3C0') + ic('star', 13, '#F5B301') + '</span></div>' +
+      '<div class="ph-card"><div><b>Scan Anything Anytime</b><span>High quality scan in second</span></div><span class="mini">' + ic('scan', 18, '#1668E3') + '</span></div>' +
+      '<div class="ph-grid">' + tile('cam','Scan Document','#1668E3') + tile('image','Import Image','#0D9488') + tile('text','OCR','#7C3AED') +
+        tile('file','PDF Tools','#F05252') + tile('pen','eSign PDF','#16A34A') + tile('folder','More','#F59E0B') + '</div>' +
+      '<div class="ph-recent">Recent Scans <span>See All</span></div>' +
+      row('ID Card Scan','Today, 18:30 AM') + row('Office Document','Today, 08:15 AM') + row('Contract Paper','Yesterday, 04:22 PM') +
+    '</div></div></div>';
+}
+function stores(cls) {
+  return '<div class="stores' + (cls || '') + '"><a class="store" href="#/download">' + PLAY +
+    '<span><small>Get it on</small><b>Google Play</b></span></a>' +
+    '<a class="store" href="#/download">' + APPLE + '<span><small>Download on the</small><b>App Store</b></span></a></div>';
+}
+function viewHome() {
+  const stat = (i, b, s) => '<div class="stat"><span class="stat-ic">' + ic(i, 17, '#1668E3') + '</span><span><b>' + b + '</b><span>' + s + '</span></span></div>';
+  const step = (i, n, t, d) => '<div class="step"><span class="ic">' + ic(i, 22, '#1668E3') + '</span><h3>' + n + '. ' + t + '</h3><p>' + d + '</p></div>';
+  const fc = (bg, c, i, t, d) => '<div class="fcard" style="background:' + bg + '"><span class="ic">' + ic(i, 20, c) + '</span><h3>' + t + '</h3><p>' + d + '</p></div>';
+  const post = p => '<article class="post"><a class="ph" href="#/blog/' + p.slug + '" style="background:' + p.tint + '" aria-hidden="true">' +
+      ic('book', 26, '#1668E3') + '</a><div><h3><a href="#/blog/' + p.slug + '" style="color:inherit">' + p.title + '</a></h3>' +
+      '<div class="meta">' + p.date + ' &nbsp;·&nbsp; ' + p.cat + '</div>' +
+      '<a class="more" href="#/blog/' + p.slug + '">Read More ' + ic('arrow', 14) + '</a></div></article>';
+
+  return '<section class="hero"><div class="wrap hero-in"><div>' +
+    '<span class="pill">' + ic('spark', 13, '#1668E3') + ' #1 Document Scanner App</span>' +
+    '<h1>Scan Any Document.<span class="accent">Anywhere, Anytime.</span></h1>' +
+    '<p class="hero-lede">Scanix is a powerful document scanner app that helps you scan, save, share and manage your documents in one place with high quality and ease.</p>' +
+    '<div class="hero-btns"><a class="btn btn-primary" href="#/download">Download Scanix App ' + ic('down', 16, '#fff') + '</a>' +
+    '<a class="btn btn-ghost" href="#/tools">Explore Free Tools ' + ic('scan', 16) + '</a></div>' +
+    '<div class="stats">' + stat('star','4.8','Ratings') + stat('down','10M+','Downloads') + stat('shield','100%','Secure') + stat('spark','Ads Free','Experience') + '</div>' +
+    stores() + '</div>' + phoneMock() + '</div></section>' +
+
+    '<section class="sec" id="tools"><div class="wrap"><div class="sec-head"><p class="eyebrow">Free Online Tools</p>' +
+    '<h2>Powerful Tools. 100% Free</h2><p>Use our free tools online. No registration required.</p></div>' +
+    '<div class="tool-grid">' + TOOLS.map(toolCard).join('') + '</div>' +
+    '<div class="center"><a class="btn btn-line" href="#/tools">View All Tools ' + ic('arrow', 15) + '</a></div></div></section>' +
+
+    '<section class="sec sec-soft"><div class="wrap"><div class="sec-head"><p class="eyebrow">Easy Steps</p><h2>How Scanix Works</h2></div>' +
+    '<div class="steps">' + step('scan',1,'Scan','Scan any document using your camera.') + step('pen',2,'Enhance','Auto enhance for the best quality.') +
+    step('share',3,'Save & Share','Save as PDF or image and share instantly.') + step('cloud',4,'Manage','Organize your documents in one place.') + '</div></div></section>' +
+
+    '<section class="sec"><div class="wrap why"><div><p class="eyebrow left">Why Choose Scanix?</p>' +
+    '<h2>Everything You Need in One Scanner App</h2><ul class="checks">' +
+    ['High quality scans with auto enhance','Quick scan &amp; easy document management','Convert, edit and share in seconds','Secure, private and reliable','Works offline, anytime, anywhere']
+      .map(x => '<li><span class="ck">' + ic('check', 11, '#fff', 3) + '</span>' + x + '</li>').join('') +
+    '</ul><a class="btn btn-primary" href="#/about">Learn More About Scanix ' + ic('arrow', 15, '#fff') + '</a></div>' +
+    '<div class="feat-grid">' + fc('#E8F6F3','#0D9488','pen','High Quality Scan','Crystal clear scans with advanced image processing.') +
+      fc('#EAF1FE','#1668E3','file','All Format Support','Export in PDF, JPG, PNG and more formats.') +
+      fc('#F2ECFE','#7C3AED','cloud','Cloud Backup','Backup &amp; sync your documents with cloud.') +
+      fc('#FEF5E3','#F59E0B','bolt','Fast &amp; Easy','Simple interface for the best user experience.') + '</div></div></section>' +
+
+    '<section class="sec sec-soft"><div class="wrap"><div class="sec-head"><p class="eyebrow">From Our Blog</p><h2>Latest Articles &amp; Tips</h2></div>' +
+    '<div class="blog-grid">' + POSTS.map(post).join('') + '</div>' +
+    '<div class="center"><a class="btn btn-line" href="#/blog">View All Articles ' + ic('arrow', 15) + '</a></div></div></section>' +
+
+    '<section style="padding:0 0 66px"><div class="wrap"><div class="band"><span class="band-mark">' + ic('scan', 32, '#fff') + '</span>' +
+    '<div><h2>Get the Scanix App Now!</h2><p>Scan, save and manage your documents on the go. Download now and experience the best scanner app.</p></div>' +
+    stores() + '<div class="band-phone"><div><div class="b1"></div><div class="b2"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>' +
+    '</div></div></section>';
+}
+
+/* ---------- static pages ---------- */
+function pageHead(title, sub, crumbs, icon, c, bg) {
+  const cr = '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a>' +
+    crumbs.map(x => ' / ' + (x[1] ? '<a href="' + x[1] + '">' + x[0] + '</a>' : x[0])).join('') + '</nav>';
+  return '<section class="page-head"><div class="wrap">' + cr + '<div class="page-head-in">' +
+    (icon ? '<span class="ic" style="background:' + bg + '">' + ic(icon, 25, c) + '</span>' : '') +
+    '<div><h1>' + title + '</h1><p>' + sub + '</p></div></div></div></section>';
+}
+function faqBlock(faqs) {
+  return '<h2>Frequently asked questions</h2>' + faqs.map(f =>
+    '<details class="faq"><summary>' + f[0] + '</summary><div class="fa">' + f[1] + '</div></details>').join('');
+}
+function viewTools() {
+  return pageHead('All Free PDF Tools', 'Ten tools that run entirely in your browser. No account, no upload, no watermark.', [['Tools','']], 'folder', '#1668E3', '#E8F1FE') +
+    '<div class="wrap sec" style="padding:38px 20px 60px"><div class="tool-grid">' + TOOLS.map(toolCard).join('') + '</div>' +
+    '<div class="prose" style="padding-top:38px"><h2>Why these tools are different</h2>' +
+    '<p>Every tool on this page opens your file with JavaScript inside this tab. Nothing is uploaded, nothing is queued on a server and nothing is deleted later, because nothing was ever sent. That means you can work on a payslip or a signed contract on public Wi-Fi without handing a copy to anyone.</p>' +
+    '<p>It also means the tools keep working when your connection drops, and there is no queue, no daily limit and no file to delete afterwards.</p>' + '</div></div>';
+}
+function viewFeatures() {
+  const rows = [
+    ['cam','Auto edge detection','The camera finds the page, straightens the perspective and crops the background before you even press the shutter.'],
+    ['spark','Image enhancement','Four modes — original, magic colour, greyscale and black &amp; white — clean up shadows and uneven lighting from a room light.'],
+    ['text','Built-in OCR','Recognise printed text in more than 60 languages and search across every document you have scanned.'],
+    ['folder','Folders and tags','Group scans by client, month or project. Search matches file names, tags and recognised text.'],
+    ['cloud','Backup and sync','Send finished documents to your cloud drive, or keep everything local. The choice is per folder.'],
+    ['lock','App lock','Protect the app with a PIN or biometrics, and encrypt individual PDFs before you share them.'],
+    ['share','Share anywhere','Export as PDF, JPG or PNG, print over AirPrint, or send straight to email and chat.'],
+    ['bolt','Works offline','Scanning, enhancement and export all run on the device. No connection needed.']
+  ];
+  return pageHead('Features', 'What Scanix does, on the phone and on the web.', [['Features','']], 'spark', '#1668E3', '#E8F1FE') +
+    '<div class="wrap sec" style="padding:38px 20px 20px"><div class="card-list">' +
+    rows.map(r => '<div class="tcard" style="text-align:left;padding:22px 20px"><span class="ic" style="background:#E8F1FE;margin:0 0 13px">' +
+      ic(r[0], 22, '#1668E3') + '</span><h3>' + r[1] + '</h3><p style="margin-top:6px">' + r[2] + '</p></div>').join('') +
+    '</div></div><div class="prose" style="padding-top:8px">' + faqBlock([
+      ['Do I need an account?','Not for the web tools. The mobile app keeps an account optional; you only need one if you turn on cloud sync across devices.'],
+      ['Is Scanix free?','The web tools are free with no limits. The app is free with all core scanning features; a paid tier adds cloud sync and unlimited OCR.'],
+      ['Which devices are supported?','Android 8 and later, iOS 15 and later, and any modern desktop or mobile browser for the online tools.']
+    ]) + '</div>';
+}
+function viewAbout() {
+  return pageHead('About Scanix', 'A scanner that treats your documents as yours.', [['About Us','']], 'users', '#1668E3', '#E8F1FE') +
+    '<div class="prose"><p>Scanix started with a small annoyance: scanning a page on a phone was easy, but doing anything useful with the result meant uploading it to a stranger&#39;s server. Contracts, medical letters and passports were being posted to free converters every day by people who had no way to check what happened next.</p>' +
+    '<p>So we built the other version. The app captures and cleans up pages on the device. The web tools do their work inside the browser tab, using the same engine that renders the PDF on your screen. A file you drop here does not travel.</p>' +
+    '<h2>What we care about</h2><ul>' +
+    '<li><b>Privacy by architecture.</b> Not a policy promise — there is no upload endpoint to trust.</li>' +
+    '<li><b>Speed.</b> The landing page ships almost no JavaScript. Tool libraries load only when you open the tool that needs them.</li>' +
+    '<li><b>Plain language.</b> Buttons say what they do, and errors say what went wrong.</li></ul>' +
+    '<h2>By the numbers</h2><ul><li>10M+ downloads across Android and iOS</li><li>4.8 average rating from more than 10,000 reviews</li><li>10 free web tools, no signup on any of them</li></ul>' +
+    '<p><a class="btn btn-primary" href="#/tools" style="margin-top:10px">Try the free tools ' + ic('arrow', 15, '#fff') + '</a></p></div>';
+}
+function viewContact() {
+  return pageHead('Contact Us', 'Questions, bug reports and partnership enquiries.', [['Contact','']], 'mail', '#1668E3', '#E8F1FE') +
+    '<div class="prose"><div class="contact-grid"><div class="opts" style="margin-top:0">' +
+    '<h3>Send a message</h3>' +
+    '<div class="field"><label for="cn">Your name</label><input id="cn" type="text" placeholder="Alex Turner"></div>' +
+    '<div class="field"><label for="ce">Email address</label><input id="ce" type="text" placeholder="alex@example.com"></div>' +
+    '<div class="field"><label for="cs">Subject</label><select id="cs"><option>Support request</option><option>Bug report</option><option>Feature idea</option><option>Business enquiry</option></select></div>' +
+    '<div class="field"><label for="cm">Message</label><textarea id="cm" class="out-text" style="min-height:120px;font-family:var(--sans)" placeholder="Tell us what happened"></textarea></div>' +
+    '<button class="btn btn-primary" id="cSend">Send message</button>' +
+    '<p class="hint" style="margin-top:10px">This demo build has no backend, so nothing is transmitted.</p></div>' +
+    '<div><h2 style="margin-top:0">Other ways to reach us</h2>' +
+    '<p><b>Support:</b> support@scanix.app<br><b>Press:</b> press@scanix.app<br><b>Business:</b> partners@scanix.app</p>' +
+    '<p>We answer support email within one business day, Monday to Friday.</p>' +
+    '<h3>Before you write</h3><p>Most questions are answered in the <a href="#/help">Help Center</a>. If a tool failed on a specific file, tell us the tool, the browser and roughly how big the file was — that is usually enough to reproduce it.</p></div></div></div>';
+}
+function viewHelp() {
+  return pageHead('Help Center', 'Answers to the questions we get most.', [['Help Center','']], 'book', '#1668E3', '#E8F1FE') +
+    '<div class="prose">' + faqBlock([
+      ['Where do my files go when I use a tool?','Nowhere. The file is read by JavaScript in this tab and the result is written back to your device. There is no upload.'],
+      ['A tool failed on my file. What now?','Most failures come from a damaged or already-encrypted PDF. Try opening it in a reader first. If it opens but the tool still fails, email support with the tool name and browser.'],
+      ['Is there a file size limit?','No fixed limit. Very large files are limited by your device memory, and a phone will give up sooner than a laptop.'],
+      ['Can I use the tools offline?','Once the page has loaded, most tools keep working without a connection. OCR needs one connection to fetch its language model, then caches it.'],
+      ['How do I remove a password from a PDF?','Open it in a reader with the password, then print or export to a new PDF. Scanix will not strip protection from a file, since we cannot tell whether it is yours.'],
+      ['Do you support batch processing?','Merge, image to PDF and split all accept multiple files or produce multiple outputs. Others handle one file at a time.']
+    ]) + '</div>';
+}
+function viewLegal(kind) {
+  const priv = '<p><b>Last updated:</b> 1 May 2026</p>' +
+    '<h2>Short version</h2><p>The online tools do not upload your documents. Files are opened and processed inside your browser, and results are saved directly to your device. We never receive them, so we cannot read, store or share them.</p>' +
+    '<h2>What we do collect</h2><ul><li><b>Anonymous usage counts:</b> which tool was opened and whether it completed. No file names, no contents.</li>' +
+    '<li><b>Newsletter email:</b> only if you type it into the subscribe box. One-click unsubscribe on every message.</li>' +
+    '<li><b>Support email:</b> kept only as long as it takes to resolve your question.</li></ul>' +
+    '<h2>App permissions</h2><p>The mobile app asks for camera access to scan and storage access to save. Cloud sync is off until you turn it on and choose a provider.</p>' +
+    '<h2>Cookies</h2><p>This site sets no advertising or tracking cookies. Local storage is used only to remember your tool preferences.</p>' +
+    '<h2>Your rights</h2><p>You can request access to, correction of, or deletion of any personal data we hold by writing to privacy@scanix.app.</p>';
+  const terms = '<p><b>Last updated:</b> 1 May 2026</p>' +
+    '<h2>Using Scanix</h2><p>The web tools are provided free of charge for lawful personal and business use. You keep all rights to the documents you process; we acquire none, because we never receive them.</p>' +
+    '<h2>Your responsibilities</h2><ul><li>Only process documents you own or are authorised to handle.</li>' +
+    '<li>Do not use the tools to remove protection from files that are not yours.</li>' +
+    '<li>Keep your own backups. Processing happens on your device and cannot be undone by us.</li></ul>' +
+    '<h2>No warranty</h2><p>The tools are provided as is. Conversion and compression change files, and results vary by document. Check output before relying on it, especially for legal or financial documents.</p>' +
+    '<h2>Electronic signatures</h2><p>The eSign tool places a signature image on a page. Whether that constitutes a valid signature depends on your jurisdiction and the agreement in question.</p>' +
+    '<h2>Changes</h2><p>We may update these terms. Material changes will be announced on this page with a new effective date.</p>';
+  const t = kind === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions';
+  return pageHead(t, kind === 'privacy' ? 'How Scanix handles your data — and why there is so little of it.' : 'The agreement between you and Scanix.',
+    [[t, '']], 'shield', '#1668E3', '#E8F1FE') + '<div class="prose">' + (kind === 'privacy' ? priv : terms) + '</div>';
+}
+function viewDownload() {
+  return pageHead('Download Scanix', 'Free on Android and iOS. No ads, no watermark.', [['Download','']], 'down', '#1668E3', '#E8F1FE') +
+    '<div class="prose"><p>Scanix is available on both stores. The store links on this demo build are placeholders.</p>' + stores() +
+    '<h2>What you get</h2><ul><li>Auto edge detection and perspective correction</li><li>Magic colour, greyscale and black &amp; white enhancement</li>' +
+    '<li>OCR in 60+ languages with full-text search</li><li>PDF export with adjustable quality and page size</li><li>App lock with PIN or biometrics</li></ul>' +
+    '<p>No app to hand? Every core conversion is on the web too — <a href="#/tools">open the free tools</a>.</p></div>';
+}
+function viewBlog() {
+  return pageHead('Blog', 'Scanning tips, PDF know-how and document security.', [['Blog','']], 'book', '#1668E3', '#E8F1FE') +
+    '<div class="wrap sec" style="padding:38px 20px 60px"><div class="card-list">' +
+    POSTS.map(p => '<a class="tcard" style="text-align:left;padding:0;overflow:hidden" href="#/blog/' + p.slug + '">' +
+      '<span style="display:grid;place-items:center;height:120px;background:' + p.tint + '">' + ic('book', 30, '#1668E3') + '</span>' +
+      '<span style="display:block;padding:18px"><span class="meta" style="font-size:.7rem;color:#8492AC">' + p.date + ' · ' + p.cat + '</span>' +
+      '<h3 style="margin:7px 0 6px">' + p.title + '</h3><p>' + p.excerpt + '</p></span></a>').join('') + '</div></div>';
+}
+function viewPost(slug) {
+  const p = PB[slug];
+  if (!p) return view404();
+  const others = POSTS.filter(x => x.slug !== slug);
+  return pageHead(p.title, p.date + ' · ' + p.cat, [['Blog', '#/blog'], [p.cat, '']], 'book', '#1668E3', '#E8F1FE') +
+    '<article class="prose">' + p.body +
+    '<h2>Keep reading</h2>' + others.map(o => '<p><a href="#/blog/' + o.slug + '">' + o.title + '</a><br><span style="font-size:.85rem">' + o.excerpt + '</span></p>').join('') +
+    '</article>';
+}
+function view404() {
+  return pageHead('Page not found', 'That link does not lead anywhere.', [['404','']], 'x', '#F05252', '#FDECEC') +
+    '<div class="prose"><p>Try the <a href="#/tools">tools page</a> or head <a href="#/">home</a>.</p></div>';
+}
+
+/* ---------- lazy library loader ---------- */
+const CDN = 'https://cdnjs.cloudflare.com/ajax/libs/';
+const _scripts = {};
+function loadScript(urls) {
+  const list = Array.isArray(urls) ? urls : [urls];
+  const key = list[0];
+  if (_scripts[key]) return _scripts[key];
+  _scripts[key] = new Promise((res, rej) => {
+    let i = 0;
+    const tryNext = () => {
+      if (i >= list.length) return rej(new Error('Could not load a required library. Check your connection and try again.'));
+      const s = document.createElement('script');
+      s.src = list[i++]; s.async = true;
+      s.onload = res;
+      s.onerror = () => { s.remove(); tryNext(); };
+      document.head.appendChild(s);
+    };
+    tryNext();
+  });
+  return _scripts[key];
+}
+async function libPdfLib() { await loadScript(CDN + 'pdf-lib/1.17.1/pdf-lib.min.js'); return window.PDFLib; }
+async function libPdfJs() {
+  await loadScript(CDN + 'pdf.js/3.11.174/pdf.min.js');
+  const lib = window.pdfjsLib;
+  lib.GlobalWorkerOptions.workerSrc = CDN + 'pdf.js/3.11.174/pdf.worker.min.js';
+  return lib;
+}
+async function libZip() { await loadScript(CDN + 'jszip/3.10.1/jszip.min.js'); return window.JSZip; }
+async function libOcr() {
+  await loadScript([CDN + 'tesseract.js/5.1.0/tesseract.min.js', CDN + 'tesseract.js/4.1.1/tesseract.min.js', 'https://unpkg.com/tesseract.js@5/dist/tesseract.min.js']);
+  return window.Tesseract;
+}
+
+/* ---------- small utils ---------- */
+function fmtSize(b) { return b < 1024 ? b + ' B' : b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(2) + ' MB'; }
+function saveBlob(blob, name) {
+  const u = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 4000);
+}
+function baseName(n) { return n.replace(/\.[^.]+$/, ''); }
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+function parseRanges(str, max) {
+  const out = [];
+  String(str).split(',').forEach(part => {
+    const p = part.trim(); if (!p) return;
+    const m = p.match(/^(\d+)\s*(?:-\s*(\d+))?$/);
+    if (!m) throw new Error('Could not read "' + p + '". Use page numbers like 1-3, 5, 8-10.');
+    let a = +m[1], b = m[2] ? +m[2] : a;
+    if (a < 1 || b < 1) throw new Error('Pages start at 1.');
+    if (a > max || b > max) throw new Error('This file has ' + max + ' page' + (max > 1 ? 's' : '') + ', so page ' + Math.max(a, b) + ' does not exist.');
+    if (a > b) { const t = a; a = b; b = t; }
+    for (let i = a; i <= b; i++) if (out.indexOf(i - 1) < 0) out.push(i - 1);
+  });
+  if (!out.length) throw new Error('Enter at least one page, like 1-3.');
+  return out;
+}
+async function canvasBlob(canvas, type, q) {
+  return new Promise(r => canvas.toBlob(r, type, q));
+}
+
+/* ---------- PDF encryption (standard security handler, RC4-128, R3) ---------- */
+function md5(bytes) {
+  const rl = (x, c) => (x << c) | (x >>> (32 - c)), add = (a, b) => (a + b) | 0;
+  const S = [7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
+             4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
+  const K = new Int32Array(64);
+  for (let i = 0; i < 64; i++) K[i] = (Math.floor(Math.abs(Math.sin(i + 1)) * 4294967296)) | 0;
+  const len = bytes.length, padLen = ((len + 1 + 8 + 63) & ~63);
+  const msg = new Uint8Array(padLen); msg.set(bytes); msg[len] = 0x80;
+  const dv = new DataView(msg.buffer);
+  dv.setUint32(padLen - 8, (len << 3) >>> 0, true);
+  dv.setUint32(padLen - 4, Math.floor(len / 536870912), true);
+  let a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
+  const M = new Int32Array(16);
+  for (let off = 0; off < padLen; off += 64) {
+    for (let j = 0; j < 16; j++) M[j] = dv.getUint32(off + j * 4, true) | 0;
+    let A = a0, B = b0, C = c0, D = d0;
+    for (let k = 0; k < 64; k++) {
+      let F, g;
+      if (k < 16) { F = (B & C) | (~B & D); g = k; }
+      else if (k < 32) { F = (D & B) | (~D & C); g = (5 * k + 1) & 15; }
+      else if (k < 48) { F = B ^ C ^ D; g = (3 * k + 5) & 15; }
+      else { F = C ^ (B | ~D); g = (7 * k) & 15; }
+      F = add(add(add(F, A), K[k]), M[g]);
+      A = D; D = C; C = B; B = add(B, rl(F, S[k]));
+    }
+    a0 = add(a0, A); b0 = add(b0, B); c0 = add(c0, C); d0 = add(d0, D);
+  }
+  const out = new Uint8Array(16), odv = new DataView(out.buffer);
+  odv.setUint32(0, a0 >>> 0, true); odv.setUint32(4, b0 >>> 0, true);
+  odv.setUint32(8, c0 >>> 0, true); odv.setUint32(12, d0 >>> 0, true);
+  return out;
+}
+function rc4(key, data) {
+  const S = new Uint8Array(256); let i, j = 0, t;
+  for (i = 0; i < 256; i++) S[i] = i;
+  for (i = 0; i < 256; i++) { j = (j + S[i] + key[i % key.length]) & 255; t = S[i]; S[i] = S[j]; S[j] = t; }
+  const out = new Uint8Array(data.length); i = 0; j = 0;
+  for (let k = 0; k < data.length; k++) {
+    i = (i + 1) & 255; j = (j + S[i]) & 255; t = S[i]; S[i] = S[j]; S[j] = t;
+    out[k] = data[k] ^ S[(S[i] + S[j]) & 255];
+  }
+  return out;
+}
+const PADPW = new Uint8Array([0x28,0xBF,0x4E,0x5E,0x4E,0x75,0x8A,0x41,0x64,0x00,0x4E,0x56,0xFF,0xFA,0x01,0x08,
+  0x2E,0x2E,0x00,0xB6,0xD0,0x68,0x3E,0x80,0x2F,0x0C,0xA9,0xFE,0x64,0x53,0x69,0x7A]);
+function padPw(pw) {
+  const b = []; for (let i = 0; i < pw.length && b.length < 32; i++) b.push(pw.charCodeAt(i) & 255);
+  const out = new Uint8Array(32); out.set(b.slice(0, 32));
+  if (b.length < 32) out.set(PADPW.subarray(0, 32 - b.length), b.length);
+  return out;
+}
+function cat(arrs) { let n = 0; arrs.forEach(a => n += a.length); const o = new Uint8Array(n); let p = 0; arrs.forEach(a => { o.set(a, p); p += a.length; }); return o; }
+function toHex(b) { let s = ''; for (let i = 0; i < b.length; i++) s += b[i].toString(16).padStart(2, '0'); return s; }
+async function encryptPdfBytes(bytes, userPw, ownerPw) {
+  const L = await libPdfLib();
+  const { PDFDocument, PDFHexString, PDFString, PDFDict, PDFArray, PDFRawStream, PDFStream } = L;
+  const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+  const ctx = doc.context, kl = 16, PERM = -1;
+  const seed = new Uint8Array(16); crypto.getRandomValues(seed);
+  const id = md5(seed);
+  // owner entry
+  let h = md5(padPw(ownerPw && ownerPw.length ? ownerPw : userPw));
+  for (let i = 0; i < 50; i++) h = md5(h);
+  let ok = h.subarray(0, kl), O = rc4(ok, padPw(userPw));
+  for (let i = 1; i <= 19; i++) { const k2 = new Uint8Array(kl); for (let j = 0; j < kl; j++) k2[j] = ok[j] ^ i; O = rc4(k2, O); }
+  // file key
+  const pbuf = new Uint8Array(4); new DataView(pbuf.buffer).setInt32(0, PERM, true);
+  let kh = md5(cat([padPw(userPw), O, pbuf, id]));
+  for (let i = 0; i < 50; i++) kh = md5(kh.subarray(0, kl));
+  const key = kh.subarray(0, kl);
+  // user entry
+  let U = rc4(key, md5(cat([PADPW, id])));
+  for (let i = 1; i <= 19; i++) { const k2 = new Uint8Array(kl); for (let j = 0; j < kl; j++) k2[j] = key[j] ^ i; U = rc4(k2, U); }
+  U = cat([U, new Uint8Array(16)]);
+  const objKey = (num, gen) => {
+    const e = new Uint8Array(5);
+    e[0] = num & 255; e[1] = (num >> 8) & 255; e[2] = (num >> 16) & 255; e[3] = gen & 255; e[4] = (gen >> 8) & 255;
+    return md5(cat([key, e])).subarray(0, Math.min(kl + 5, 16));
+  };
+  const encStrings = (obj, num, gen) => {
+    if (obj instanceof PDFArray) {
+      const arr = obj.asArray();
+      for (let i = 0; i < arr.length; i++) {
+        const v = arr[i];
+        if (v instanceof PDFString || v instanceof PDFHexString) obj.set(i, PDFHexString.of(toHex(rc4(objKey(num, gen), v.asBytes()))));
+        else encStrings(v, num, gen);
+      }
+    } else if (obj instanceof PDFDict) {
+      for (const [k, v] of obj.entries()) {
+        if (v instanceof PDFString || v instanceof PDFHexString) obj.set(k, PDFHexString.of(toHex(rc4(objKey(num, gen), v.asBytes()))));
+        else encStrings(v, num, gen);
+      }
+    }
+  };
+  for (const [ref, obj] of ctx.enumerateIndirectObjects()) {
+    const n = ref.objectNumber, g = ref.generationNumber;
+    if (obj instanceof PDFRawStream) { encStrings(obj.dict, n, g); obj.contents = rc4(objKey(n, g), obj.contents); }
+    else if (obj instanceof PDFStream) { encStrings(obj.dict, n, g); }
+    else encStrings(obj, n, g);
+  }
+  const encRef = ctx.register(ctx.obj({
+    Filter: 'Standard', V: 2, R: 3, Length: 128, P: PERM,
+    O: PDFHexString.of(toHex(O)), U: PDFHexString.of(toHex(U))
+  }));
+  ctx.trailerInfo.Encrypt = encRef;
+  const idStr = PDFHexString.of(toHex(id));
+  ctx.trailerInfo.ID = ctx.obj([idStr, idStr]);
+  return await doc.save({ useObjectStreams: false });
+}
+
+/* ---------- tool workspace ---------- */
+let ST = { files: [], opt: {}, sel: [], extra: {} };
+const UI = {
+  clear() { $('#msg').innerHTML = ''; $('#res').innerHTML = ''; $('#prog').innerHTML = ''; },
+  status(t, pct) {
+    const p = $('#prog');
+    if (!p.firstChild) p.innerHTML = '<div class="bar"><i></i></div><div class="status"></div>';
+    $('.status', p).textContent = t || '';
+    if (pct != null) $('.bar i', p).style.width = Math.max(2, Math.min(100, pct)) + '%';
+  },
+  error(m) { $('#msg').innerHTML = '<div class="err"><b>That did not work.</b> ' + esc(m) + '</div>'; $('#prog').innerHTML = ''; },
+  result(title, sub, outs) {
+    $('#prog').innerHTML = '';
+    window._outs = outs;
+    $('#res').innerHTML = '<div class="result"><h3>' + esc(title) + '</h3><p style="font-size:.86rem">' + esc(sub) + '</p>' +
+      '<div class="outs">' + outs.map((o, i) => '<div class="out">' + ic('file', 18, '#16A34A') +
+        '<span><b>' + esc(o.name) + '</b><small style="display:block">' + fmtSize(o.blob.size) + (o.note ? ' · ' + esc(o.note) : '') + '</small></span>' +
+        '<button class="btn btn-primary btn-sm" data-dl="' + i + '">Download</button></div>').join('') +
+      '</div>' + (outs.length > 1 ? '<button class="btn btn-ghost btn-sm" style="margin-top:12px" data-dl="all">Download all</button>' : '') + '</div>';
+    $('#res').scrollIntoView({ block: 'nearest' });
+  }
+};
+function fileRow(f, i, n, reorder) {
+  return '<div class="frow"><span class="fi">' + ic(f.type.indexOf('image') === 0 ? 'image' : 'file', 17, '#1668E3') + '</span>' +
+    '<span><b>' + esc(f.name) + '</b><small>' + fmtSize(f.size) + (f._pages ? ' · ' + f._pages + ' pages' : '') + '</small></span>' +
+    '<span class="acts">' +
+    (reorder ? '<button class="iconbtn" data-mv="' + i + ',-1" aria-label="Move up"' + (i === 0 ? ' disabled' : '') + '>' + ic('up', 15) + '</button>' +
+      '<button class="iconbtn" data-mv="' + i + ',1" aria-label="Move down"' + (i === n - 1 ? ' disabled' : '') + '>' + ic('chev', 15) + '</button>' : '') +
+    '<button class="iconbtn" data-rm="' + i + '" aria-label="Remove ' + esc(f.name) + '">' + ic('trash', 15) + '</button></span></div>';
+}
+function paintFiles() {
+  const sp = ENGINE[ST.slug];
+  $('#files').innerHTML = ST.files.map((f, i) => fileRow(f, i, ST.files.length, !!sp.reorder)).join('');
+  $('#go').disabled = ST.files.length < (sp.min || 1);
+  $('#drop').style.display = (!sp.multiple && ST.files.length) ? 'none' : '';
+}
+function segGroup(name, items, val) {
+  return '<div class="segs" data-seg="' + name + '">' + items.map(i =>
+    '<button type="button" class="seg' + (i[0] === val ? ' on' : '') + '" data-val="' + i[0] + '">' + i[1] + '</button>').join('') + '</div>';
+}
+
+/* ---------- engines ---------- */
+const ENGINE = {
+  'merge-pdf': {
+    accept: 'application/pdf', multiple: true, reorder: true, min: 2, cta: 'Merge PDFs',
+    drop: 'Choose PDF files', hint: 'Pick two or more. Drag files here or click to browse.',
+    async run(st) {
+      const L = await libPdfLib(), out = await L.PDFDocument.create();
+      for (let i = 0; i < st.files.length; i++) {
+        UI.status('Adding ' + st.files[i].name + '…', (i / st.files.length) * 100);
+        const src = await L.PDFDocument.load(await st.files[i].arrayBuffer(), { ignoreEncryption: true });
+        (await out.copyPages(src, src.getPageIndices())).forEach(p => out.addPage(p));
+      }
+      UI.status('Writing the merged file…', 96);
+      const bytes = await out.save();
+      UI.result('Merged ' + st.files.length + ' files', out.getPageCount() + ' pages in one document',
+        [{ name: 'scanix-merged.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  },
+  'split-pdf': {
+    accept: 'application/pdf', cta: 'Split PDF', drop: 'Choose a PDF', hint: 'One file at a time.',
+    defaults: { mode: 'each' },
+    opts: () => '<h3>How to split</h3>' + segGroup('mode', [['each', 'Every page separately'], ['range', 'Extract a page range']], ST.opt.mode) +
+      '<div class="field" style="margin-top:14px" data-when="range"><label for="rg">Pages to keep</label>' +
+      '<input id="rg" type="text" placeholder="1-3, 5, 8-10" value="' + (ST.opt.rg || '') + '">' +
+      '<p class="hint">Commas and dashes. Pages are numbered from 1.</p></div>',
+    async onFiles(st) {
+      const L = await libPdfLib();
+      const d = await L.PDFDocument.load(await st.files[0].arrayBuffer(), { ignoreEncryption: true });
+      st.files[0]._pages = d.getPageCount(); paintFiles();
+    },
+    async run(st) {
+      const L = await libPdfLib(), buf = await st.files[0].arrayBuffer();
+      const src = await L.PDFDocument.load(buf, { ignoreEncryption: true });
+      const n = src.getPageCount(), base = baseName(st.files[0].name);
+      if (ST.opt.mode === 'range') {
+        const idx = parseRanges($('#rg').value, n);
+        const out = await L.PDFDocument.create();
+        (await out.copyPages(src, idx)).forEach(p => out.addPage(p));
+        const bytes = await out.save();
+        UI.result('Extracted ' + idx.length + ' pages', 'From a ' + n + '-page document',
+          [{ name: base + '-extract.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+      } else {
+        const JSZip = await libZip(), zip = new JSZip();
+        for (let i = 0; i < n; i++) {
+          UI.status('Splitting page ' + (i + 1) + ' of ' + n, (i / n) * 100);
+          const out = await L.PDFDocument.create();
+          (await out.copyPages(src, [i])).forEach(p => out.addPage(p));
+          zip.file(base + '-page-' + (i + 1) + '.pdf', await out.save());
+        }
+        UI.status('Packing the ZIP…', 97);
+        const blob = await zip.generateAsync({ type: 'blob' });
+        UI.result('Split into ' + n + ' files', 'One PDF per page, zipped together',
+          [{ name: base + '-pages.zip', blob: blob }]);
+      }
+    }
+  },
+  'compress-pdf': {
+    accept: 'application/pdf', cta: 'Compress PDF', drop: 'Choose a PDF', hint: 'Works best on scans and image-heavy files.',
+    defaults: { level: 'balanced' },
+    opts: () => '<h3>Compression level</h3>' + segGroup('level', [['light', 'Light — best quality'], ['balanced', 'Balanced'], ['strong', 'Strong — smallest file']], ST.opt.level) +
+      '<p class="hint" style="margin-top:10px">Pages are rebuilt as images, so text stops being selectable.</p>',
+    async run(st) {
+      const P_ = { light: { s: 2, q: .85 }, balanced: { s: 1.5, q: .7 }, strong: { s: 1.05, q: .52 } }[ST.opt.level];
+      const pdfjs = await libPdfJs(), L = await libPdfLib();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      const out = await L.PDFDocument.create();
+      const cv = document.createElement('canvas'), cx = cv.getContext('2d');
+      for (let i = 1; i <= doc.numPages; i++) {
+        UI.status('Compressing page ' + i + ' of ' + doc.numPages, (i / doc.numPages) * 92);
+        const page = await doc.getPage(i), base = page.getViewport({ scale: 1 }), vp = page.getViewport({ scale: P_.s });
+        cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+        cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+        await page.render({ canvasContext: cx, viewport: vp }).promise;
+        const jpg = await embedCanvasJpg(out, cv, P_.q);
+        const pg = out.addPage([base.width, base.height]);
+        pg.drawImage(jpg, { x: 0, y: 0, width: base.width, height: base.height });
+      }
+      UI.status('Writing the file…', 97);
+      const bytes = await out.save();
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const cut = Math.round((1 - blob.size / st.files[0].size) * 100);
+      UI.result(cut > 0 ? 'Saved ' + cut + '%' : 'Compressed',
+        fmtSize(st.files[0].size) + ' → ' + fmtSize(blob.size) + ' · ' + doc.numPages + ' pages',
+        [{ name: baseName(st.files[0].name) + '-compressed.pdf', blob: blob }]);
+    }
+  },
+  'rotate-pdf': {
+    accept: 'application/pdf', cta: 'Rotate and save', drop: 'Choose a PDF', hint: 'Preview every page, then turn the ones you need.',
+    defaults: { angle: '90' },
+    opts: () => '<h3>Turn by</h3>' + segGroup('angle', [['90', '90° right'], ['180', '180°'], ['270', '90° left']], ST.opt.angle) +
+      '<p class="hint" style="margin-top:10px">Click page thumbnails to rotate only those. With none selected, every page turns.</p>',
+    async onFiles(st) {
+      const pdfjs = await libPdfJs();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      st.files[0]._pages = doc.numPages; paintFiles();
+      const host = $('#extra'); host.innerHTML = '<div class="thumbs" id="th"></div>'; st.sel = [];
+      const max = Math.min(doc.numPages, 60);
+      for (let i = 1; i <= max; i++) {
+        const page = await doc.getPage(i), vp = page.getViewport({ scale: .32 });
+        const cv = document.createElement('canvas'); cv.width = vp.width; cv.height = vp.height;
+        await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
+        const d = document.createElement('div'); d.className = 'thumb-c'; d.dataset.pg = i - 1;
+        d.appendChild(cv); d.insertAdjacentHTML('beforeend', '<span>Page ' + i + '</span>');
+        $('#th').appendChild(d);
+      }
+      if (doc.numPages > max) host.insertAdjacentHTML('beforeend', '<p class="hint">Showing the first ' + max + ' pages. Rotation still applies to the whole file when nothing is selected.</p>');
+    },
+    async run(st) {
+      const L = await libPdfLib(), d = await L.PDFDocument.load(await st.files[0].arrayBuffer(), { ignoreEncryption: true });
+      const ang = +ST.opt.angle, pages = d.getPages();
+      const targets = st.sel.length ? st.sel : pages.map((_, i) => i);
+      targets.forEach(i => { const p = pages[i]; if (p) p.setRotation(L.degrees((p.getRotation().angle + ang) % 360)); });
+      const bytes = await d.save();
+      UI.result('Rotated ' + targets.length + ' page' + (targets.length > 1 ? 's' : ''), 'Turned ' + ang + '° clockwise',
+        [{ name: baseName(st.files[0].name) + '-rotated.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  },
+  'image-to-pdf': {
+    accept: 'image/*', multiple: true, reorder: true, cta: 'Create PDF', drop: 'Choose images',
+    hint: 'JPG, PNG or WebP. Each image becomes one page.',
+    defaults: { size: 'fit', margin: '0' },
+    opts: () => '<h3>Page size</h3>' + segGroup('size', [['fit', 'Fit to image'], ['a4', 'A4 portrait'], ['a4l', 'A4 landscape'], ['letter', 'US Letter']], ST.opt.size) +
+      '<h3 style="margin-top:16px">Margin</h3>' + segGroup('margin', [['0', 'None'], ['24', 'Small'], ['48', 'Wide']], ST.opt.margin),
+    async run(st) {
+      const L = await libPdfLib(), out = await L.PDFDocument.create(), m = +ST.opt.margin;
+      const SZ = { a4: [595.28, 841.89], a4l: [841.89, 595.28], letter: [612, 792] };
+      for (let i = 0; i < st.files.length; i++) {
+        UI.status('Adding image ' + (i + 1) + ' of ' + st.files.length, (i / st.files.length) * 95);
+        const f = st.files[i];
+        let img;
+        if (/jpe?g$/i.test(f.type) || /\.jpe?g$/i.test(f.name)) img = await out.embedJpg(await f.arrayBuffer());
+        else {
+          const bmp = await loadImage(f), cv = document.createElement('canvas');
+          cv.width = bmp.width; cv.height = bmp.height;
+          const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+          cx.drawImage(bmp, 0, 0);
+          img = await embedCanvasJpg(out, cv, .92);
+        }
+        let pw, ph;
+        if (ST.opt.size === 'fit') { pw = img.width + m * 2; ph = img.height + m * 2; }
+        else { pw = SZ[ST.opt.size][0]; ph = SZ[ST.opt.size][1]; }
+        const page = out.addPage([pw, ph]);
+        const avW = pw - m * 2, avH = ph - m * 2, sc = Math.min(avW / img.width, avH / img.height);
+        const w = img.width * sc, h = img.height * sc;
+        page.drawImage(img, { x: (pw - w) / 2, y: (ph - h) / 2, width: w, height: h });
+      }
+      const bytes = await out.save();
+      UI.result('Created a PDF', st.files.length + ' page' + (st.files.length > 1 ? 's' : ''),
+        [{ name: 'scanix-images.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  },
+  'pdf-to-image': {
+    accept: 'application/pdf', cta: 'Convert to images', drop: 'Choose a PDF', hint: 'Every page becomes a separate image.',
+    defaults: { fmt: 'png', dpi: '150' },
+    opts: () => '<h3>Format</h3>' + segGroup('fmt', [['png', 'PNG — sharp text'], ['jpg', 'JPG — smaller files']], ST.opt.fmt) +
+      '<h3 style="margin-top:16px">Resolution</h3>' + segGroup('dpi', [['96', '96 DPI screen'], ['150', '150 DPI'], ['300', '300 DPI print']], ST.opt.dpi),
+    async run(st) {
+      const pdfjs = await libPdfJs();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      const scale = (+ST.opt.dpi) / 72, png = ST.opt.fmt === 'png', base = baseName(st.files[0].name);
+      const outs = [];
+      for (let i = 1; i <= doc.numPages; i++) {
+        UI.status('Rendering page ' + i + ' of ' + doc.numPages, (i / doc.numPages) * 95);
+        const page = await doc.getPage(i), vp = page.getViewport({ scale });
+        const cv = document.createElement('canvas'); cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+        const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+        await page.render({ canvasContext: cx, viewport: vp }).promise;
+        const blob = await canvasBlob(cv, png ? 'image/png' : 'image/jpeg', png ? undefined : .88);
+        outs.push({ name: base + '-page-' + i + '.' + (png ? 'png' : 'jpg'), blob: blob, note: cv.width + '×' + cv.height });
+      }
+      if (outs.length > 1) {
+        const JSZip = await libZip(), zip = new JSZip();
+        outs.forEach(o => zip.file(o.name, o.blob));
+        outs.push({ name: base + '-images.zip', blob: await zip.generateAsync({ type: 'blob' }), note: 'all pages' });
+      }
+      UI.result('Converted ' + doc.numPages + ' page' + (doc.numPages > 1 ? 's' : ''), ST.opt.dpi + ' DPI ' + ST.opt.fmt.toUpperCase(), outs);
+    }
+  },
+  'pdf-to-word': {
+    accept: 'application/pdf', cta: 'Convert to Word', drop: 'Choose a PDF', hint: 'Text-based PDFs only. Scans need OCR first.',
+    async run(st) {
+      const pdfjs = await libPdfJs();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      const pagesHtml = [];
+      let chars = 0;
+      for (let i = 1; i <= doc.numPages; i++) {
+        UI.status('Reading page ' + i + ' of ' + doc.numPages, (i / doc.numPages) * 92);
+        const page = await doc.getPage(i), tc = await page.getTextContent();
+        const rows = [];
+        tc.items.forEach(it => {
+          if (!it.str) return;
+          const y = Math.round(it.transform[5]), x = it.transform[4];
+          let row = rows.find(r => Math.abs(r.y - y) < 3);
+          if (!row) { row = { y: y, parts: [] }; rows.push(row); }
+          row.parts.push({ x: x, s: it.str });
+        });
+        rows.sort((a, b) => b.y - a.y);
+        const lines = rows.map(r => r.parts.sort((a, b) => a.x - b.x).map(p => p.s).join('').replace(/\s+/g, ' ').trim()).filter(Boolean);
+        chars += lines.join('').length;
+        pagesHtml.push(lines.map(l => '<p>' + esc(l) + '</p>').join('\n'));
+      }
+      if (chars < 5) throw new Error('No text found in this PDF. It is probably a scan — run OCR on it instead.');
+      const html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+        '<head><meta charset="utf-8"><title>' + esc(baseName(st.files[0].name)) + '</title>' +
+        '<style>@page{margin:2cm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.5}p{margin:0 0 8pt}' +
+        'hr{page-break-after:always;border:0}</style></head><body>' +
+        pagesHtml.join('\n<hr>\n') + '</body></html>';
+      const blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
+      UI.result('Converted to Word', doc.numPages + ' pages · about ' + chars.toLocaleString() + ' characters',
+        [{ name: baseName(st.files[0].name) + '.doc', blob: blob }]);
+    }
+  },
+  'lock-pdf': {
+    accept: 'application/pdf', cta: 'Lock PDF', drop: 'Choose a PDF', hint: 'Encryption happens on your device.',
+    opts: () => '<h3>Password</h3>' +
+      '<div class="field"><label for="pw1">Password to open the file</label><input id="pw1" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>' +
+      '<div class="field"><label for="pw2">Repeat the password</label><input id="pw2" type="password" autocomplete="new-password" placeholder="Type it again">' +
+      '<p class="hint">There is no recovery. Store this password somewhere safe before you download.</p></div>',
+    async run(st) {
+      const a = $('#pw1').value, b = $('#pw2').value;
+      if (a.length < 6) throw new Error('Use a password of at least 6 characters.');
+      if (a !== b) throw new Error('The two passwords do not match.');
+      UI.status('Encrypting…', 40);
+      const bytes = await encryptPdfBytes(new Uint8Array(await st.files[0].arrayBuffer()), a, '');
+      UI.result('Locked', 'Opening this file now requires the password',
+        [{ name: baseName(st.files[0].name) + '-locked.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  },
+  'ocr': {
+    accept: 'application/pdf,image/*', cta: 'Extract text', drop: 'Choose an image or PDF',
+    hint: 'JPG, PNG, WebP or PDF.',
+    defaults: { lang: 'eng' },
+    opts: () => '<div class="field"><label for="lg">Document language</label><select id="lg">' +
+      [['eng', 'English'], ['spa', 'Spanish'], ['fra', 'French'], ['deu', 'German'], ['ita', 'Italian'], ['por', 'Portuguese'],
+       ['nld', 'Dutch'], ['rus', 'Russian'], ['ara', 'Arabic'], ['hin', 'Hindi'], ['chi_sim', 'Chinese (simplified)'], ['jpn', 'Japanese']]
+      .map(l => '<option value="' + l[0] + '">' + l[1] + '</option>').join('') +
+      '</select><p class="hint">The language model is downloaded once, then cached by your browser.</p></div>',
+    async run(st) {
+      const f = st.files[0], lang = $('#lg').value;
+      const imgs = [];
+      if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) {
+        const pdfjs = await libPdfJs();
+        const doc = await pdfjs.getDocument({ data: new Uint8Array(await f.arrayBuffer()) }).promise;
+        const max = Math.min(doc.numPages, 20);
+        for (let i = 1; i <= max; i++) {
+          UI.status('Rendering page ' + i + ' of ' + max, (i / max) * 25);
+          const page = await doc.getPage(i), vp = page.getViewport({ scale: 2 });
+          const cv = document.createElement('canvas'); cv.width = vp.width; cv.height = vp.height;
+          const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+          await page.render({ canvasContext: cx, viewport: vp }).promise;
+          imgs.push(cv);
+        }
+      } else imgs.push(f);
+      UI.status('Loading the recognition engine…', 28);
+      const Tess = await libOcr();
+      let text = '';
+      for (let i = 0; i < imgs.length; i++) {
+        const r = await Tess.recognize(imgs[i], lang, {
+          logger: m => { if (m.status === 'recognizing text') UI.status('Reading page ' + (i + 1) + ' of ' + imgs.length + '…', 30 + ((i + m.progress) / imgs.length) * 68); }
+        });
+        text += (imgs.length > 1 ? (i ? '\n\n' : '') + '--- Page ' + (i + 1) + ' ---\n' : '') + r.data.text.trim() + '\n';
+      }
+      text = text.trim();
+      if (!text) throw new Error('No readable text was found. Try a sharper picture, straight on, with even light.');
+      $('#prog').innerHTML = '';
+      $('#res').innerHTML = '<div class="result"><h3>Text extracted</h3><p style="font-size:.86rem">' +
+        text.split(/\s+/).length + ' words · edit it here or download it</p>' +
+        '<textarea class="out-text" id="ocrOut" style="margin-top:12px" spellcheck="false"></textarea>' +
+        '<div class="run" style="margin-top:10px"><button class="btn btn-primary btn-sm" id="ocrCopy">Copy text</button>' +
+        '<button class="btn btn-ghost btn-sm" id="ocrDl">Download .txt</button></div></div>';
+      $('#ocrOut').value = text;
+      $('#ocrCopy').onclick = () => { navigator.clipboard.writeText($('#ocrOut').value).then(() => toast('Text copied')); };
+      $('#ocrDl').onclick = () => saveBlob(new Blob([$('#ocrOut').value], { type: 'text/plain' }), baseName(f.name) + '.txt');
+    }
+  },
+  'esign-pdf': {
+    accept: 'application/pdf', cta: 'Place signature and save', drop: 'Choose a PDF', hint: 'Draw or type your signature, then click the page.',
+    defaults: { mode: 'draw', size: '24' },
+    opts: () => '<h3>Signature</h3>' + segGroup('mode', [['draw', 'Draw it'], ['type', 'Type it']], ST.opt.mode) +
+      '<div id="sigDraw" style="margin-top:12px"><canvas class="sig-pad" id="pad"></canvas>' +
+      '<button class="btn btn-ghost btn-sm" style="margin-top:8px" id="padClear">Clear</button></div>' +
+      '<div id="sigType" style="margin-top:12px;display:none"><div class="field"><label for="sigTxt">Text to place</label>' +
+      '<input id="sigTxt" type="text" placeholder="Alex Turner"></div></div>' +
+      '<h3 style="margin-top:16px">Size on the page</h3>' + segGroup('size', [['16', 'Small'], ['24', 'Medium'], ['34', 'Large']], ST.opt.size),
+    async onFiles(st) {
+      const pdfjs = await libPdfJs();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      st.files[0]._pages = doc.numPages; paintFiles();
+      st.extra.doc = doc; st.extra.page = 1; st.extra.pos = null;
+      const nav = doc.numPages > 1 ? '<div class="segs" data-seg="pg" style="margin-top:12px">' +
+        Array.from({ length: Math.min(doc.numPages, 30) }, (_, i) => '<button type="button" class="seg' + (i === 0 ? ' on' : '') + '" data-val="' + (i + 1) + '">Page ' + (i + 1) + '</button>').join('') + '</div>' : '';
+      $('#extra').innerHTML = nav + '<p class="hint" style="margin-top:12px">Click where the signature should go.</p>' +
+        '<div class="stage" id="stage"><canvas id="pv"></canvas><div class="ghost" id="ghost" style="display:none"></div></div>';
+      await paintPreview();
+    },
+    async run(st) {
+      const sig = signatureCanvas();
+      if (!sig) throw new Error('Draw or type your signature first.');
+      if (!st.extra.pos) throw new Error('Click the page preview to choose where the signature goes.');
+      const L = await libPdfLib(), d = await L.PDFDocument.load(await st.files[0].arrayBuffer(), { ignoreEncryption: true });
+      const page = d.getPages()[st.extra.page - 1];
+      const { width: pw, height: ph } = page.getSize();
+      const png = await d.embedPng(await (await canvasBlob(sig, 'image/png')).arrayBuffer());
+      const w = pw * (+ST.opt.size / 100), h = w * (sig.height / sig.width);
+      page.drawImage(png, { x: st.extra.pos.x * pw - w / 2, y: (1 - st.extra.pos.y) * ph - h / 2, width: w, height: h });
+      const bytes = await d.save();
+      UI.result('Signed', 'Signature placed on page ' + st.extra.page,
+        [{ name: baseName(st.files[0].name) + '-signed.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  }
+};
+
+/* ---------- tool helpers ---------- */
+async function embedCanvasJpg(pdfDoc, canvas, q) {
+  const blob = await canvasBlob(canvas, 'image/jpeg', q);
+  return pdfDoc.embedJpg(await blob.arrayBuffer());
+}
+function loadImage(file) {
+  return new Promise((res, rej) => {
+    const img = new Image(), u = URL.createObjectURL(file);
+    img.onload = () => { URL.revokeObjectURL(u); res(img); };
+    img.onerror = () => { URL.revokeObjectURL(u); rej(new Error('That image could not be opened.')); };
+    img.src = u;
+  });
+}
+async function paintPreview() {
+  const doc = ST.extra.doc; if (!doc) return;
+  const page = await doc.getPage(ST.extra.page);
+  const base = page.getViewport({ scale: 1 });
+  const scale = Math.min(560 / base.width, 1.6);
+  const vp = page.getViewport({ scale: scale });
+  const cv = $('#pv'); cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+  const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+  await page.render({ canvasContext: cx, viewport: vp }).promise;
+  ST.extra.pos = null; $('#ghost').style.display = 'none';
+}
+function signatureCanvas() {
+  if (ST.opt.mode === 'type') {
+    const txt = ($('#sigTxt') && $('#sigTxt').value || '').trim();
+    if (!txt) return null;
+    const cv = document.createElement('canvas'); cv.width = 900; cv.height = 260;
+    const cx = cv.getContext('2d');
+    cx.clearRect(0, 0, cv.width, cv.height);
+    cx.fillStyle = '#111827'; cx.textAlign = 'center'; cx.textBaseline = 'middle';
+    cx.font = 'italic 600 120px Georgia, "Times New Roman", serif';
+    cx.fillText(txt, cv.width / 2, cv.height / 2);
+    return cv;
+  }
+  const pad = $('#pad');
+  if (!pad || !pad._drawn) return null;
+  return trimCanvas(pad);
+}
+function trimCanvas(src) {
+  const cx = src.getContext('2d'), d = cx.getImageData(0, 0, src.width, src.height).data;
+  let x0 = src.width, y0 = src.height, x1 = 0, y1 = 0, found = false;
+  for (let y = 0; y < src.height; y++) for (let x = 0; x < src.width; x++) {
+    if (d[(y * src.width + x) * 4 + 3] > 12) { found = true; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  }
+  if (!found) return null;
+  const pad = 8;
+  x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad);
+  x1 = Math.min(src.width, x1 + pad); y1 = Math.min(src.height, y1 + pad);
+  const out = document.createElement('canvas');
+  out.width = x1 - x0; out.height = y1 - y0;
+  out.getContext('2d').drawImage(src, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+  return out;
+}
+function initSignaturePad() {
+  const pad = $('#pad'); if (!pad) return;
+  const r = pad.getBoundingClientRect();
+  pad.width = Math.round(r.width * 2); pad.height = 360;
+  const cx = pad.getContext && pad.getContext('2d');
+  if (!cx) return;
+  cx.lineWidth = 4.5; cx.lineCap = 'round'; cx.lineJoin = 'round'; cx.strokeStyle = '#111827';
+  let drawing = false;
+  const pt = e => { const b = pad.getBoundingClientRect(); return { x: (e.clientX - b.left) * (pad.width / b.width), y: (e.clientY - b.top) * (pad.height / b.height) }; };
+  pad.addEventListener('pointerdown', e => { drawing = true; pad.setPointerCapture(e.pointerId); const p = pt(e); cx.beginPath(); cx.moveTo(p.x, p.y); });
+  pad.addEventListener('pointermove', e => { if (!drawing) return; const p = pt(e); cx.lineTo(p.x, p.y); cx.stroke(); pad._drawn = true; });
+  pad.addEventListener('pointerup', () => { drawing = false; });
+  pad.addEventListener('pointerleave', () => { drawing = false; });
+  $('#padClear').onclick = () => { cx.clearRect(0, 0, pad.width, pad.height); pad._drawn = false; };
+}
+
+/* ---------- tool page ---------- */
+const HOWTO = {
+  'merge-pdf': [['Add your PDFs', 'Drop two or more files onto the box, or click it to browse.'], ['Put them in order', 'Use the arrows on each row until the sequence is right.'], ['Merge and download', 'Press Merge PDFs and save the single combined file.']],
+  'split-pdf': [['Add a PDF', 'Drop in the document you want to break up.'], ['Choose how to split', 'Every page separately, or type a range like 1-3, 7.'], ['Download', 'You get a ZIP for a full split, or one PDF for a range.']],
+  'compress-pdf': [['Add a PDF', 'Scans and photo-heavy files shrink the most.'], ['Pick a level', 'Balanced suits email. Strong is for tight upload limits.'], ['Check the saving', 'The result shows old and new size before you download.']],
+  'rotate-pdf': [['Add a PDF', 'Thumbnails of every page appear underneath.'], ['Select pages', 'Click the crooked ones, or select none to turn them all.'], ['Rotate and save', 'Choose the angle and download the corrected file.']],
+  'image-to-pdf': [['Add images', 'JPG, PNG or WebP, as many as you like.'], ['Arrange and set the page', 'Reorder with the arrows, then choose page size and margin.'], ['Create the PDF', 'Download one document containing every image.']],
+  'pdf-to-image': [['Add a PDF', 'Every page will be rendered separately.'], ['Choose format and resolution', 'PNG for text, JPG for photos; 150 DPI suits most uses.'], ['Download', 'Grab single pages, or take everything as a ZIP.']],
+  'pdf-to-word': [['Add a text-based PDF', 'If you cannot select text in a reader, it is a scan — use OCR first.'], ['Convert', 'Text is read page by page and paragraphs are rebuilt.'], ['Open in Word', 'Download the .doc and edit it anywhere.']],
+  'lock-pdf': [['Add a PDF', 'The file stays on your device throughout.'], ['Set a password', 'Type it twice. Six characters minimum, longer is better.'], ['Download the locked file', 'Anyone opening it will be asked for the password.']],
+  'ocr': [['Add an image or PDF', 'Sharp, straight-on, evenly lit pages read best.'], ['Pick the language', 'Choosing the right one matters more than image size.'], ['Extract and edit', 'Fix any stray characters in the box, then copy or download.']],
+  'esign-pdf': [['Add a PDF', 'A preview of the page appears below.'], ['Make your signature', 'Draw it with a finger or mouse, or type your name.'], ['Place it and save', 'Click the page where it belongs, then download the signed file.']]
+};
+function viewTool(slug) {
+  const t = T[slug]; if (!t) return view404();
+  const sp = ENGINE[slug];
+  ST = { slug: slug, files: [], opt: Object.assign({}, sp.defaults || {}), sel: [], extra: {} };
+  const steps = HOWTO[slug].map((s, i) => '<li><b>' + s[0] + '.</b> ' + s[1] + '</li>').join('');
+  const related = TOOLS.filter(x => x.slug !== slug).slice(0, 5).map(toolCard).join('');
+  return pageHead(t.name, t.intro, [['Tools', '#/tools'], [t.name, '']], t.icon, t.c, t.bg) +
+    '<div class="tool-wrap" id="tool">' +
+      '<div class="drop" id="drop" role="button" tabindex="0" aria-label="' + esc(sp.drop) + '">' +
+        '<span class="ic">' + ic('upload', 24, '#1668E3') + '</span><b>' + esc(sp.drop) + '</b><small>' + esc(sp.hint) + '</small></div>' +
+      '<input type="file" id="fi" hidden accept="' + sp.accept + '"' + (sp.multiple ? ' multiple' : '') + '>' +
+      '<div class="files" id="files"></div><div id="extra"></div>' +
+      (sp.opts ? '<div class="opts" id="opts">' + sp.opts() + '</div>' : '') +
+      '<div class="run"><button class="btn btn-primary" id="go" disabled>' + esc(sp.cta) + '</button>' +
+      '<button class="btn btn-ghost btn-sm" id="reset">Start over</button></div>' +
+      '<div id="prog"></div><div id="msg"></div><div id="res"></div>' +
+      '<div class="note">' + ic('shield', 17, '#1668E3') + '<span><b style="color:var(--ink)">Your file never leaves this device.</b> ' +
+      'Processing happens in your browser, so nothing is uploaded and nothing is stored.</span></div>' +
+    '</div>' +
+    '<div class="prose" style="padding-top:0"><h2>How to ' + t.name.toLowerCase() + '</h2><ol style="padding-left:20px">' + steps + '</ol>' +
+    '<p>' + esc(t.desc) + '</p>' + faqBlock(t.faqs) + '</div>' +
+    '<div class="sec sec-soft"><div class="wrap"><div class="sec-head"><h2 style="font-size:1.35rem">Other free tools</h2></div>' +
+    '<div class="tool-grid">' + related + '</div></div></div>';
+}
+function initTool(slug) {
+  const sp = ENGINE[slug];
+  const fi = $('#fi'), drop = $('#drop');
+  const take = list => {
+    const arr = Array.from(list).filter(f => f.size > 0);
+    if (!arr.length) return;
+    ST.files = sp.multiple ? ST.files.concat(arr) : [arr[0]];
+    UI.clear(); $('#extra').innerHTML = '';
+    paintFiles();
+    if (sp.onFiles) Promise.resolve(sp.onFiles(ST)).catch(e => UI.error(e.message));
+  };
+  drop.onclick = () => fi.click();
+  drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fi.click(); } };
+  fi.onchange = () => { take(fi.files); fi.value = ''; };
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => take(e.dataTransfer.files));
+  $('#reset').onclick = () => { location.hash = '#/tools/' + slug; renderRoute(true); };
+  $('#go').onclick = async () => {
+    const btn = $('#go');
+    UI.clear(); btn.disabled = true; btn.textContent = 'Working…';
+    try { await sp.run(ST); }
+    catch (e) {
+      const m = String(e && e.message || e);
+      UI.error(/encrypt|password/i.test(m) && !/do not match|6 characters/i.test(m)
+        ? 'This PDF is password protected. Open it with the password and save an unlocked copy first.' : m);
+    }
+    btn.disabled = false; btn.textContent = sp.cta;
+  };
+  if (slug === 'esign-pdf') initSignaturePad();
+  applyConditionalFields();
+}
+function applyConditionalFields() {
+  $$('[data-when]').forEach(el => { el.style.display = (el.dataset.when === ST.opt.mode) ? '' : 'none'; });
+  if (ST.slug === 'esign-pdf' && $('#sigDraw')) {
+    $('#sigDraw').style.display = ST.opt.mode === 'draw' ? '' : 'none';
+    $('#sigType').style.display = ST.opt.mode === 'type' ? '' : 'none';
+  }
+}
+
+/* ---------- SEO head ---------- */
+function setMeta(title, desc, path, faqs) {
+  document.title = title;
+  const set = (sel, attr, val) => { const el = $(sel); if (el) el.setAttribute(attr, val); };
+  set('meta[name="description"]', 'content', desc);
+  set('meta[property="og:title"]', 'content', title);
+  set('meta[property="og:description"]', 'content', desc);
+  set('meta[name="twitter:title"]', 'content', title);
+  set('meta[name="twitter:description"]', 'content', desc);
+  const url = 'https://scanix.app/' + (path ? '#/' + path : '');
+  set('link[rel="canonical"]', 'href', url);
+  set('meta[property="og:url"]', 'content', url);
+  const old = $('#ld-page'); if (old) old.remove();
+  if (faqs && faqs.length) {
+    const s = document.createElement('script');
+    s.type = 'application/ld+json'; s.id = 'ld-page';
+    s.textContent = JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: faqs.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1].replace(/<[^>]+>/g, '') } }))
+    });
+    document.head.appendChild(s);
+  }
+}
+
+/* ---------- router ---------- */
+function renderRoute(keepScroll) {
+  const raw = (location.hash ? location.hash.replace(/^#\/?/, '') : (window.__ROUTE__ || '')).replace(/\/+$/, '');
+  const p = raw.split('/').filter(Boolean);
+  let body = '', title = '', desc = '', faqs = null;
+  if (!p.length) { body = viewHome(); title = 'Scanix — Scan Any Document. Anywhere, Anytime.'; desc = 'Scanix is a document scanner app and a free online PDF toolkit. Scan, convert, merge, split, compress, sign and protect documents right in your browser.'; }
+  else if (p[0] === 'tools' && p[1]) {
+    const t = T[p[1]];
+    if (t) { body = viewTool(p[1]); title = t.title + ' — Scanix'; desc = t.desc; faqs = t.faqs; }
+    else { body = view404(); title = 'Page not found — Scanix'; desc = 'This page does not exist.'; }
+  }
+  else if (p[0] === 'tools') { body = viewTools(); title = 'Free online PDF tools — Scanix'; desc = 'Ten free PDF tools that run in your browser: OCR, compress, split, merge, rotate, convert, sign and lock. No signup, no upload.'; }
+  else if (p[0] === 'blog' && p[1]) { const b = PB[p[1]]; body = viewPost(p[1]); title = (b ? b.title : 'Not found') + ' — Scanix Blog'; desc = b ? b.excerpt : ''; }
+  else if (p[0] === 'blog') { body = viewBlog(); title = 'Blog — scanning tips and PDF guides | Scanix'; desc = 'Practical advice on scanning documents, working with PDFs and keeping files secure.'; }
+  else if (p[0] === 'features') { body = viewFeatures(); title = 'Features — Scanix document scanner'; desc = 'Auto edge detection, image enhancement, OCR in 60+ languages, folders, backup, app lock and offline scanning.'; }
+  else if (p[0] === 'about') { body = viewAbout(); title = 'About Scanix'; desc = 'Why Scanix processes documents on your device instead of uploading them to a server.'; }
+  else if (p[0] === 'contact') { body = viewContact(); title = 'Contact Scanix'; desc = 'Support, bug reports, press and partnership enquiries.'; }
+  else if (p[0] === 'help') { body = viewHelp(); title = 'Help Center — Scanix'; desc = 'Answers about file safety, size limits, offline use and failed conversions.'; }
+  else if (p[0] === 'privacy') { body = viewLegal('privacy'); title = 'Privacy Policy — Scanix'; desc = 'What Scanix collects, what it does not, and how document processing stays on your device.'; }
+  else if (p[0] === 'terms') { body = viewLegal('terms'); title = 'Terms & Conditions — Scanix'; desc = 'The terms that apply when you use the Scanix app and online tools.'; }
+  else if (p[0] === 'download') { body = viewDownload(); title = 'Download Scanix for Android and iOS'; desc = 'Get the free Scanix document scanner app for Android and iOS.'; }
+  else { body = view404(); title = 'Page not found — Scanix'; desc = 'This page does not exist.'; }
+
+  $('#app').innerHTML = header(p.join('/')) + '<main id="main">' + body + '</main>' + footer();
+  setMeta(title, desc, p.join('/'), faqs);
+  if (p[0] === 'tools' && p[1] && ENGINE[p[1]]) initTool(p[1]);
+  if (!keepScroll) window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+/* ---------- global events ---------- */
+document.addEventListener('click', async e => {
+  const el = e.target.closest('[data-mv],[data-rm],[data-dl],.seg,.thumb-c,#burger,#subBtn,#cSend,#stage');
+  if (!el) return;
+  if (el.id === 'burger') { const m = $('#mobile'); m.classList.toggle('show'); el.setAttribute('aria-expanded', m.classList.contains('show')); return; }
+  if (el.id === 'subBtn') { const v = $('#nl').value.trim(); toast(/.+@.+\..+/.test(v) ? 'Subscribed. Check your inbox.' : 'Enter a valid email address.'); return; }
+  if (el.id === 'cSend') { toast('This demo has no backend, so nothing was sent.'); return; }
+  if (el.dataset.mv) {
+    const [i, d] = el.dataset.mv.split(',').map(Number), j = i + d;
+    if (j < 0 || j >= ST.files.length) return;
+    const a = ST.files[i]; ST.files[i] = ST.files[j]; ST.files[j] = a; paintFiles(); return;
+  }
+  if (el.dataset.rm) {
+    ST.files.splice(+el.dataset.rm, 1); paintFiles(); UI.clear();
+    if (!ST.files.length) $('#extra').innerHTML = '';
+    return;
+  }
+  if (el.dataset.dl) {
+    const outs = window._outs || [];
+    if (el.dataset.dl === 'all') {
+      const zip = outs.filter(o => /\.zip$/.test(o.name));
+      (zip.length ? zip : outs).forEach((o, i) => setTimeout(() => saveBlob(o.blob, o.name), i * 300));
+    }
+    else { const o = outs[+el.dataset.dl]; if (o) saveBlob(o.blob, o.name); }
+    
+    return;
+  }
+  if (el.classList.contains('seg')) {
+    const grp = el.closest('.segs'), name = grp.dataset.seg;
+    $$('.seg', grp).forEach(b => b.classList.remove('on'));
+    el.classList.add('on');
+    if (name === 'pg') { ST.extra.page = +el.dataset.val; paintPreview(); }
+    else { ST.opt[name] = el.dataset.val; applyConditionalFields(); }
+    return;
+  }
+  if (el.classList.contains('thumb-c')) {
+    el.classList.toggle('sel');
+    const pg = +el.dataset.pg, k = ST.sel.indexOf(pg);
+    if (k < 0) ST.sel.push(pg); else ST.sel.splice(k, 1);
+    return;
+  }
+  if (el.id === 'stage') {
+    const cv = $('#pv'), b = cv.getBoundingClientRect();
+    const x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height;
+    if (x < 0 || x > 1 || y < 0 || y > 1) return;
+    ST.extra.pos = { x: x, y: y };
+    const sig = signatureCanvas();
+    const wPct = +ST.opt.size, hPct = sig ? wPct * (sig.height / sig.width) * (b.width / b.height) : 8;
+    const g = $('#ghost');
+    g.style.display = 'block';
+    g.style.left = (x * 100 - wPct / 2) + '%';
+    g.style.top = (y * 100 - hPct / 2) + '%';
+    g.style.width = wPct + '%';
+    g.style.height = hPct + '%';
+  }
+});
+window.addEventListener('hashchange', () => renderRoute());
+renderRoute();
+</script>
+</body>
+</html>
