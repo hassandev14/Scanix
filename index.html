@@ -310,6 +310,13 @@ textarea.out-text{width:100%;min-height:230px;border:1px solid var(--line);borde
 .stage{position:relative;display:inline-block;max-width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
 .stage canvas{display:block;max-width:100%;height:auto}
 .stage canvas.ov{position:absolute;left:0;top:0;width:100%;height:100%;cursor:crosshair}
+.stage .tl{position:absolute;left:0;top:0;width:100%;height:100%}
+.stage .tl b{position:absolute;white-space:pre;font-weight:400;color:transparent;cursor:text;border:1px dashed transparent;border-radius:2px;line-height:1;box-sizing:content-box;padding:1px 2px;margin:-1px -2px;overflow:hidden}
+.stage .tl b:hover{border-color:#1668E3;background:rgba(22,104,227,.10)}
+.stage .tl b.ed{color:#111827;background:#fff;border-color:#16A34A}
+.stage .tl b.locked{cursor:not-allowed}
+.stage .tl b.locked:hover{border-color:#C7CFDC;background:rgba(120,130,150,.08)}
+.stage .tl input{position:absolute;border:2px solid #1668E3;border-radius:3px;background:#fff;color:#111827;padding:1px 3px;margin:-3px -5px;outline:none;line-height:1.15;box-shadow:0 4px 14px rgba(12,32,70,.18);z-index:5}
 .stage .ghost{position:absolute;pointer-events:none;border:1.5px dashed var(--blue);background:rgba(22,104,227,.06)}
 
 /* content pages */
@@ -465,12 +472,15 @@ const TOOLS = [
           ['Can I rotate one page only?','Yes. Click a page thumbnail to select it. With nothing selected, the rotation applies to every page.'],
           ['Will the rotation stick in other apps?','Yes. It is written into the file itself, so any standard PDF reader shows it the same way.']] },
   { slug:'edit-pdf', name:'Edit PDF', tag:'Add text, draw, highlight', icon:'edit', c:'#0891B2', bg:'#E0F4F8',
-    title:'Edit PDF online — add text, draw and highlight',
-    desc:'Write on a PDF, draw freehand, highlight passages, and delete or reorder pages. Runs in your browser with nothing uploaded.',
-    intro:'Mark up a PDF without buying an editor. Add a note, sign off a figure, highlight a clause, or drop a page you do not need.',
-    faqs:[['Can I edit the text that is already in the PDF?','No. A PDF stores text as positioned glyphs, not editable paragraphs, so changing a word in place is not possible here. You can cover the old text with a highlight and write the correction on top, or use PDF to Word if you need to rewrite the whole document.'],
-          ['Do my edits stay editable afterwards?','No. Text, drawings and highlights are drawn permanently into the page, so they look the same in every reader and cannot be moved later. Keep the original file if you might want to change something.'],
-          ['Which characters can I type?','The standard Latin set. Accented letters outside WinAnsi, and non-Latin scripts such as Arabic, Hindi or Chinese, are not supported by the built-in font and will be reported rather than silently dropped.']] },
+    title:'Edit PDF online — click any text and change it',
+    desc:'Click a word in your PDF and retype it. Also add new text, draw, highlight, and delete or reorder pages. Nothing is uploaded.',
+    intro:'Click any line of text in the page below and type over it. Fix a typo, change a date, correct a figure — then save.',
+    faqs:[['How does clicking to edit work?','Hover the page and every editable line of text lights up. Click one, type your replacement, press Enter. On save the original is covered and your text is drawn in its place, at the same position and size.'],
+          ['Why can I not click some text?','Rotated text and scanned pages cannot be edited. A scan holds a picture of words, not the words themselves, so there is nothing to click. Run OCR on it first to get the text out.'],
+          ['Will the replacement match the original font exactly?','Close, not exact. The tool matches the family — serif, sans-serif or monospace — and the size, using the fonts built into every PDF reader. A distinctive branded typeface will look slightly different.'],
+          ['Is the text I replaced really gone?','With "Remove it properly" selected, yes — the edited page is rebuilt as an image, so the old wording cannot be copied or extracted. Choose "Keep page selectable" and the page stays as text, but the original words remain in the file underneath your edit and can be recovered. That matters if you are changing a figure, a name or a date in something you will send on.'],
+          ['My page has a coloured background and the edit left a white patch.','Replacing text means painting over the old glyphs, which assumes a white background. On coloured or textured pages the patch will show. Those pages are better handled with the highlight tool.'],
+          ['Which characters can I type?','Standard Latin letters, numbers and punctuation. Non-Latin scripts such as Arabic, Hindi or Chinese are not supported by the built-in fonts and are reported rather than silently dropped.']] },
   { slug:'image-to-pdf', name:'Image to PDF', tag:'JPG / PNG to PDF', icon:'image', c:'#EC4899', bg:'#FDEAF3',
     title:'Image to PDF — convert JPG and PNG to PDF',
     desc:'Turn photos and screenshots into a single PDF. Choose page size, orientation and margin.',
@@ -1274,19 +1284,25 @@ const ENGINE = {
   },
   'edit-pdf': {
     accept: 'application/pdf', cta: 'Save edited PDF', drop: 'Choose a PDF',
-    hint: 'Add text, draw, highlight, delete or reorder pages.',
-    defaults: { mode: 'text', color: 'black', size: 'med' },
-    opts: () => '<h3>Tool</h3>' + segGroup('mode', [['text', 'Text'], ['draw', 'Draw'], ['hl', 'Highlight']], ST.opt.mode) +
+    hint: 'Click text on the page to change it. Text-based PDFs only.',
+    defaults: { mode: 'edit', color: 'black', size: 'med', flatten: 'on' },
+    opts: () => '<h3>Mode</h3>' + segGroup('mode', [['edit', 'Edit existing text'], ['text', 'Add text'], ['draw', 'Draw'], ['hl', 'Highlight']], ST.opt.mode) +
+      '<p class="hint" style="margin-top:10px" data-when="edit">Hover the page: every editable line lights up. Click one, retype it, press Enter. Leave it empty to delete the text.</p>' +
       '<div class="field" style="margin-top:12px" data-when="text"><label for="edTxt">Text to place</label>' +
       '<input id="edTxt" type="text" placeholder="Approved \u2014 24 May" autocomplete="off">' +
       '<p class="hint">Type it here, then click the page where it should go.</p></div>' +
       '<h3 style="margin-top:16px">Colour</h3>' + segGroup('color', [['black', 'Black'], ['red', 'Red'], ['blue', 'Blue'], ['yellow', 'Yellow']], ST.opt.color) +
-      '<h3 style="margin-top:16px">Size</h3>' + segGroup('size', [['sm', 'Small'], ['med', 'Medium'], ['lg', 'Large']], ST.opt.size),
+      '<h3 style="margin-top:16px">Size</h3>' + segGroup('size', [['sm', 'Small'], ['med', 'Medium'], ['lg', 'Large']], ST.opt.size) +
+      '<p class="hint" style="margin-top:8px">Colour and size apply to added text, drawings and highlights. Edited text keeps the original size.</p>' +
+      '<h3 style="margin-top:16px">Replaced text</h3>' + segGroup('flatten', [['on', 'Remove it properly'], ['off', 'Keep page selectable']], ST.opt.flatten) +
+      '<p class="hint" style="margin-top:8px"><b style="color:var(--ink)">Remove it properly</b> flattens each edited page to an image, so the old wording cannot be copied back out. ' +
+      '<b style="color:var(--ink)">Keep page selectable</b> leaves the page as text, but the original words stay recoverable underneath your edit. ' +
+      'Use the first for anything private.</p>',
     async onFiles(st) {
       const pdfjs = await libPdfJs();
       const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
       st.files[0]._pages = doc.numPages; paintFiles();
-      st.extra = { doc: doc, order: Array.from({ length: doc.numPages }, (_, i) => i), at: 0, edits: {} };
+      st.extra = { doc: doc, order: Array.from({ length: doc.numPages }, (_, i) => i), at: 0, edits: {}, items: {} };
       $('#extra').innerHTML =
         '<div class="run" style="margin-top:18px;justify-content:space-between">' +
           '<span style="display:flex;gap:8px;align-items:center">' +
@@ -1298,12 +1314,13 @@ const ENGINE = {
             '<button class="btn btn-ghost btn-sm" id="edLeft">Move page back</button>' +
             '<button class="btn btn-ghost btn-sm" id="edRight">Move page on</button>' +
             '<button class="btn btn-ghost btn-sm" id="edDel">Delete page</button></span></div>' +
-        '<div class="stage" id="edStage"><canvas id="pv"></canvas><canvas class="ov" id="ov"></canvas></div>';
+        '<div class="stage" id="edStage"><canvas id="pv"></canvas><canvas class="ov" id="ov"></canvas><div class="tl" id="tl"></div></div>' +
+        '<p class="status" id="edInfo"></p>';
       $('#edPrev').onclick = () => { if (ST.extra.at > 0) { ST.extra.at--; paintEditor(); } };
       $('#edNext').onclick = () => { if (ST.extra.at < ST.extra.order.length - 1) { ST.extra.at++; paintEditor(); } };
       $('#edUndo').onclick = () => {
         const k = ST.extra.order[ST.extra.at], list = ST.extra.edits[k];
-        if (list && list.length) { list.pop(); drawOverlay(); } else toast('Nothing to undo on this page.');
+        if (list && list.length) { list.pop(); drawOverlay(); layoutTextLayer(); } else toast('Nothing to undo on this page.');
       };
       $('#edLeft').onclick = () => moveEditorPage(-1);
       $('#edRight').onclick = () => moveEditorPage(1);
@@ -1317,31 +1334,56 @@ const ENGINE = {
       };
       await paintEditor();
       bindEditorCanvas();
+      if (!ST.extra._resize) {
+        ST.extra._resize = true;
+        window.addEventListener('resize', () => { if (ST.slug === 'edit-pdf') layoutTextLayer(); });
+      }
     },
     async run(st) {
       const e = st.extra;
       if (!e || !e.doc) throw new Error('Load a PDF first.');
       const L = await libPdfLib();
       const src = await L.PDFDocument.load(await st.files[0].arrayBuffer(), { ignoreEncryption: true });
-      const font = await src.embedFont(L.StandardFonts.Helvetica);
       const COL = { black: L.rgb(.07, .09, .15), red: L.rgb(.85, .16, .16), blue: L.rgb(.09, .41, .89), yellow: L.rgb(.96, .72, .05) };
       const TSZ = { sm: 10, med: 14, lg: 20 }, WSZ = { sm: 1.5, med: 3, lg: 5 };
+      const WHITE = L.rgb(1, 1, 1);
+      const cache = {};
+      const fontFor = async fam => {
+        const key = /mono|courier/i.test(fam || '') ? 'Courier' : (/serif/i.test(fam || '') && !/sans/i.test(fam || '')) ? 'TimesRoman' : 'Helvetica';
+        if (!cache[key]) cache[key] = await src.embedFont(L.StandardFonts[key]);
+        return cache[key];
+      };
+      const helv = await fontFor('sans-serif');
       const pages = src.getPages();
-      let ops = 0;
-      Object.keys(e.edits).forEach(k => {
-        const page = pages[+k]; if (!page) return;
+      let edited = 0, added = 0;
+      const keys = Object.keys(e.edits);
+      for (const k of keys) {
+        const page = pages[+k]; if (!page) continue;
         const { width: W, height: H } = page.getSize();
-        e.edits[k].forEach(op => {
-          ops++;
+        for (const op of e.edits[k]) {
           const col = COL[op.color] || COL.black;
-          if (op.t === 'text') {
+          if (op.t === 'edit') {
+            edited++;
+            page.drawRectangle({ x: op.x - 1, y: op.y - op.fs * .26, width: op.w + 2, height: op.fs * 1.3, color: WHITE });
+            if (op.text) {
+              const f = await fontFor(op.fam);
+              let size = op.fs, wNew;
+              try { wNew = f.widthOfTextAtSize(op.text, size); }
+              catch (err) { throw new Error('"' + op.text + '" uses characters the built-in fonts cannot draw. Stick to Latin letters, numbers and punctuation.'); }
+              if (op.w > 0 && wNew > op.w * 1.02) size = size * (op.w * 1.02) / wNew;
+              page.drawText(op.text, { x: op.x, y: op.y, size: size, font: f, color: L.rgb(.07, .09, .15) });
+            }
+          } else if (op.t === 'text') {
+            added++;
             const size = TSZ[op.size];
-            try { page.drawText(op.text, { x: op.x * W, y: (1 - op.y) * H - size * .3, size: size, font: font, color: col }); }
-            catch (err) { throw new Error('"' + op.text + '" uses characters the built-in font cannot draw. Stick to standard Latin letters, numbers and punctuation.'); }
+            try { page.drawText(op.text, { x: op.x * W, y: (1 - op.y) * H - size * .3, size: size, font: helv, color: col }); }
+            catch (err) { throw new Error('"' + op.text + '" uses characters the built-in fonts cannot draw. Stick to Latin letters, numbers and punctuation.'); }
           } else if (op.t === 'hl') {
+            added++;
             page.drawRectangle({ x: Math.min(op.x, op.x2) * W, y: (1 - Math.max(op.y, op.y2)) * H,
               width: Math.abs(op.x2 - op.x) * W, height: Math.abs(op.y2 - op.y) * H, color: col, opacity: .32 });
           } else if (op.t === 'draw') {
+            added++;
             const th = WSZ[op.size];
             for (let i = 1; i < op.pts.length; i++) {
               page.drawLine({ start: { x: op.pts[i - 1].x * W, y: (1 - op.pts[i - 1].y) * H },
@@ -1349,8 +1391,8 @@ const ENGINE = {
                 lineCap: L.LineCapStyle ? L.LineCapStyle.Round : undefined });
             }
           }
-        });
-      });
+        }
+      }
       const reordered = e.order.length !== pages.length || e.order.some((v, i) => v !== i);
       let bytes;
       if (reordered) {
@@ -1359,8 +1401,22 @@ const ENGINE = {
         (await out.copyPages(src, e.order)).forEach(pg => out.addPage(pg));
         bytes = await out.save();
       } else bytes = await src.save();
+      let flattened = 0;
+      if (edited && ST.opt.flatten !== 'off') {
+        const hit = [];
+        e.order.forEach((orig, pos) => {
+          if ((e.edits[orig] || []).some(o => o.t === 'edit')) hit.push(pos);
+        });
+        if (hit.length) {
+          UI.status('Removing the replaced text\u2026', 82);
+          bytes = await flattenPages(bytes, hit);
+          flattened = hit.length;
+        }
+      }
       const notes = [];
-      if (ops) notes.push(ops + ' edit' + (ops > 1 ? 's' : ''));
+      if (edited) notes.push(edited + ' text edit' + (edited > 1 ? 's' : ''));
+      if (flattened) notes.push(flattened + ' page' + (flattened > 1 ? 's' : '') + ' flattened');
+      if (added) notes.push(added + ' addition' + (added > 1 ? 's' : ''));
       if (reordered) notes.push(e.order.length + ' pages after reordering');
       UI.result('Saved', notes.length ? notes.join(' \u00b7 ') : 'No changes were made',
         [{ name: baseName(st.files[0].name) + '-edited.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
@@ -1404,6 +1460,31 @@ const ENGINE = {
 };
 
 
+/* Rebuild the given page positions as images, so replaced text is truly gone. */
+async function flattenPages(bytes, positions) {
+  const pdfjs = await libPdfJs(), L = await libPdfLib();
+  const doc = await pdfjs.getDocument({ data: new Uint8Array(bytes.slice(0)) }).promise;
+  const srcDoc = await L.PDFDocument.load(bytes, { ignoreEncryption: true });
+  const out = await L.PDFDocument.create();
+  const want = {}; positions.forEach(i => want[i] = 1);
+  const cv = document.createElement('canvas'), cx = cv.getContext('2d');
+  for (let i = 0; i < doc.numPages; i++) {
+    if (want[i]) {
+      const page = await doc.getPage(i + 1);
+      const base = page.getViewport({ scale: 1 }), vp = page.getViewport({ scale: 2 });
+      cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+      cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+      await page.render({ canvasContext: cx, viewport: vp }).promise;
+      const jpg = await embedCanvasJpg(out, cv, .9);
+      out.addPage([base.width, base.height]).drawImage(jpg, { x: 0, y: 0, width: base.width, height: base.height });
+    } else {
+      const [copy] = await out.copyPages(srcDoc, [i]);
+      out.addPage(copy);
+    }
+  }
+  return await out.save();
+}
+
 /* ---------- PDF editor canvas ---------- */
 function moveEditorPage(d) {
   const e = ST.extra, j = e.at + d;
@@ -1421,9 +1502,29 @@ async function paintEditor() {
   const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
   await page.render({ canvasContext: cx, viewport: vp }).promise;
   const ov = $('#ov'); ov.width = cv.width; ov.height = cv.height;
-  e.pw = base.width;
+  e.pw = base.width; e.ph = base.height;
+
+  // detect editable text runs (PDF user space, origin bottom-left, y = baseline)
+  if (!e.items[orig]) {
+    const tc = await page.getTextContent();
+    e.items[orig] = tc.items.map(it => {
+      const tx = it.transform;
+      const rotated = Math.abs(tx[1]) > .01 || Math.abs(tx[2]) > .01;
+      return {
+        text: it.str, x: tx[4], y: tx[5], w: it.width,
+        fs: Math.abs(tx[3]) || Math.hypot(tx[2], tx[3]) || 10,
+        fam: (tc.styles && tc.styles[it.fontName] && tc.styles[it.fontName].fontFamily) || 'sans-serif',
+        ok: !rotated && !!it.str.trim()
+      };
+    }).filter(i => i.text.length);
+  }
   $('#edLabel').textContent = 'Page ' + (e.at + 1) + ' of ' + e.order.length + ' (original ' + (orig + 1) + ')';
+  const n = e.items[orig].filter(i => i.ok).length;
+  $('#edInfo').textContent = n
+    ? n + ' editable text run' + (n > 1 ? 's' : '') + ' found on this page \u2014 click one to change it.'
+    : 'No editable text on this page. It is probably a scan, so only Add text, Draw and Highlight will work here.';
   drawOverlay();
+  layoutTextLayer();
 }
 function drawOverlay(temp) {
   const ov = $('#ov'); if (!ov) return;
@@ -1435,7 +1536,11 @@ function drawOverlay(temp) {
   const list = (ST.extra.edits[ST.extra.order[ST.extra.at]] || []).concat(temp ? [temp] : []);
   list.forEach(op => {
     const col = HEX[op.color] || '#111827';
-    if (op.t === 'text') {
+    if (op.t === 'edit') {
+      // paint out the original run, exactly as the saved PDF will
+      cx.fillStyle = '#fff';
+      cx.fillRect((op.x - 1) * scale, (ST.extra.ph - op.y - op.fs) * scale, (op.w + 2) * scale, op.fs * 1.3 * scale);
+    } else if (op.t === 'text') {
       cx.fillStyle = col;
       cx.font = (TSZ[op.size] * scale) + 'px Helvetica, Arial, sans-serif';
       cx.textBaseline = 'alphabetic';
@@ -1454,6 +1559,76 @@ function drawOverlay(temp) {
     }
   });
 }
+/* Lay transparent hit targets over every text run, sized in CSS pixels. */
+function layoutTextLayer() {
+  const tl = $('#tl'), cv = $('#pv'), e = ST.extra;
+  if (!tl || !cv || !e || !e.pw) return;
+  const editing = ST.opt.mode === 'edit';
+  tl.style.pointerEvents = editing ? 'auto' : 'none';
+  $('#ov').style.pointerEvents = editing ? 'none' : 'auto';
+  if (!editing) { tl.innerHTML = ''; return; }
+  const disp = cv.getBoundingClientRect().width || cv.width;
+  const k = disp / e.pw;
+  const orig = e.order[e.at];
+  const edits = e.edits[orig] || [];
+  const byIndex = {};
+  edits.forEach(op => { if (op.t === 'edit') byIndex[op.i] = op; });
+  tl.innerHTML = '';
+  (e.items[orig] || []).forEach((it, i) => {
+    const op = byIndex[i];
+    const b = document.createElement('b');
+    b.textContent = op ? op.text : it.text;
+    b.style.left = (it.x * k) + 'px';
+    b.style.top = ((e.ph - it.y - it.fs * .82) * k) + 'px';
+    b.style.fontSize = (it.fs * k) + 'px';
+    b.style.minWidth = (it.w * k) + 'px';
+    b.style.fontFamily = it.fam;
+    if (!it.ok) b.className = 'locked';
+    else if (op) b.className = 'ed';
+    if (it.ok) b.onclick = () => openTextEditor(i, it, b, k);
+    else b.title = 'This text cannot be edited (rotated or part of an image).';
+    tl.appendChild(b);
+  });
+}
+function openTextEditor(i, it, span, k) {
+  const tl = $('#tl'), e = ST.extra, orig = e.order[e.at];
+  const existing = (e.edits[orig] || []).find(o => o.t === 'edit' && o.i === i);
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.value = existing ? existing.text : it.text;
+  inp.style.left = span.style.left;
+  inp.style.top = span.style.top;
+  inp.style.fontSize = span.style.fontSize;
+  inp.style.fontFamily = it.fam;
+  inp.style.width = Math.max(it.w * k + 24, 80) + 'px';
+  span.style.visibility = 'hidden';
+  tl.appendChild(inp);
+  inp.focus(); inp.select();
+  let done = false;
+  const commit = save => {
+    if (done) return; done = true;
+    const val = inp.value;
+    inp.remove(); span.style.visibility = '';
+    if (save && val !== it.text) {
+      const list = e.edits[orig] = e.edits[orig] || [];
+      const at = list.indexOf(existing);
+      const op = { t: 'edit', i: i, text: val, x: it.x, y: it.y, w: it.w, fs: it.fs, fam: it.fam };
+      if (at >= 0) list[at] = op; else list.push(op);
+      drawOverlay();
+    } else if (save && existing) {
+      // reverted to the original wording, so drop the edit
+      const list = e.edits[orig];
+      list.splice(list.indexOf(existing), 1);
+      drawOverlay();
+    }
+    layoutTextLayer();
+  };
+  inp.onkeydown = ev => {
+    if (ev.key === 'Enter') { ev.preventDefault(); commit(true); }
+    else if (ev.key === 'Escape') { ev.preventDefault(); commit(false); }
+  };
+  inp.onblur = () => commit(true);
+}
 function bindEditorCanvas() {
   const ov = $('#ov'); if (!ov) return;
   const pos = ev => { const b = ov.getBoundingClientRect(); return { x: (ev.clientX - b.left) / b.width, y: (ev.clientY - b.top) / b.height }; };
@@ -1464,6 +1639,7 @@ function bindEditorCanvas() {
   };
   let live = null;
   ov.addEventListener('pointerdown', ev => {
+    if (ST.opt.mode === 'edit') return;
     const p = pos(ev);
     if (p.x < 0 || p.x > 1 || p.y < 0 || p.y > 1) return;
     if (ST.opt.mode === 'text') {
@@ -1571,7 +1747,7 @@ const HOWTO = {
   'split-pdf': [['Add a PDF', 'Drop in the document you want to break up.'], ['Choose how to split', 'Every page separately, or type a range like 1-3, 7.'], ['Download', 'You get a ZIP for a full split, or one PDF for a range.']],
   'compress-pdf': [['Add a PDF', 'Scans and photo-heavy files shrink the most.'], ['Pick a level', 'Balanced suits email. Strong is for tight upload limits.'], ['Check the saving', 'The result shows old and new size before you download.']],
   'rotate-pdf': [['Add a PDF', 'Thumbnails of every page appear underneath.'], ['Select pages', 'Click the crooked ones, or select none to turn them all.'], ['Rotate and save', 'Choose the angle and download the corrected file.']],
-  'edit-pdf': [['Add a PDF', 'The first page appears as a preview you can draw on.'], ['Pick a tool and mark the page', 'Type text and click to place it, drag to draw or highlight, and step through pages as you go.'], ['Save', 'Delete or reorder pages if you need to, then download the edited file.']],
+  'edit-pdf': [['Add a PDF', 'The first page appears with every editable line of text detected.'], ['Click the text you want to change', 'Type the replacement and press Enter. Switch modes to add new text, draw or highlight instead.'], ['Save', 'Delete or reorder pages if you need to, then download the edited file.']],
   'image-to-pdf': [['Add images', 'JPG, PNG or WebP, as many as you like.'], ['Arrange and set the page', 'Reorder with the arrows, then choose page size and margin.'], ['Create the PDF', 'Download one document containing every image.']],
   'pdf-to-image': [['Add a PDF', 'Every page will be rendered separately.'], ['Choose format and resolution', 'PNG for text, JPG for photos; 150 DPI suits most uses.'], ['Download', 'Grab single pages, or take everything as a ZIP.']],
   'pdf-to-word': [['Add a text-based PDF', 'If you cannot select text in a reader, it is a scan — use OCR first.'], ['Convert', 'Text is read page by page and paragraphs are rebuilt.'], ['Open in Word', 'Download the .doc and edit it anywhere.']],
@@ -1737,7 +1913,11 @@ document.addEventListener('click', async e => {
     $$('.seg', grp).forEach(b => b.classList.remove('on'));
     el.classList.add('on');
     if (name === 'pg') { ST.extra.page = +el.dataset.val; paintPreview(); }
-    else { ST.opt[name] = el.dataset.val; applyConditionalFields(); }
+    else {
+      ST.opt[name] = el.dataset.val;
+      applyConditionalFields();
+      if (ST.slug === 'edit-pdf' && $('#tl')) layoutTextLayer();
+    }
     return;
   }
   if (el.classList.contains('thumb-c')) {
