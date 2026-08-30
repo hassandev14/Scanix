@@ -7,13 +7,13 @@
 <meta name="description" content="Scanix is a document scanner app and a free online PDF toolkit. Scan, convert, merge, split, compress, sign and protect documents right in your browser — no signup, no uploads.">
 <meta name="theme-color" content="#1668E3">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://scanix.app/">
+<link rel="canonical" href="https://scanix.hassantayyabdev.workers.dev/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Scanix">
 <meta property="og:title" content="Scanix — Scan Any Document. Anywhere, Anytime.">
 <meta property="og:description" content="Free online PDF tools plus a premium document scanner app. Everything runs in your browser.">
-<meta property="og:url" content="https://scanix.app/">
-<meta property="og:image" content="https://scanix.app/og-cover.png">
+<meta property="og:url" content="https://scanix.hassantayyabdev.workers.dev/">
+<meta property="og:image" content="https://scanix.hassantayyabdev.workers.dev/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Scanix — Scan Any Document. Anywhere, Anytime.">
 <meta name="twitter:description" content="Free online PDF tools plus a premium document scanner app.">
@@ -29,21 +29,21 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://scanix.app/#org",
+      "@id": "https://scanix.hassantayyabdev.workers.dev/#org",
       "name": "Scanix",
-      "url": "https://scanix.app/",
+      "url": "https://scanix.hassantayyabdev.workers.dev/",
       "slogan": "Scan Any Document. Anywhere, Anytime.",
       "sameAs": ["https://facebook.com/scanix","https://twitter.com/scanix","https://instagram.com/scanix","https://youtube.com/@scanix"]
     },
     {
       "@type": "WebSite",
-      "@id": "https://scanix.app/#website",
-      "url": "https://scanix.app/",
+      "@id": "https://scanix.hassantayyabdev.workers.dev/#website",
+      "url": "https://scanix.hassantayyabdev.workers.dev/",
       "name": "Scanix",
-      "publisher": {"@id": "https://scanix.app/#org"},
+      "publisher": {"@id": "https://scanix.hassantayyabdev.workers.dev/#org"},
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://scanix.app/#/tools?q={search_term_string}",
+        "target": "https://scanix.hassantayyabdev.workers.dev/#/tools?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
@@ -309,6 +309,7 @@ textarea.out-text{width:100%;min-height:230px;border:1px solid var(--line);borde
 .sig-pad{border:1px solid var(--line);border-radius:12px;background:#fff;touch-action:none;width:100%;height:180px;cursor:crosshair}
 .stage{position:relative;display:inline-block;max-width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
 .stage canvas{display:block;max-width:100%;height:auto}
+.stage canvas.ov{position:absolute;left:0;top:0;width:100%;height:100%;cursor:crosshair}
 .stage .ghost{position:absolute;pointer-events:none;border:1.5px dashed var(--blue);background:rgba(22,104,227,.06)}
 
 /* content pages */
@@ -389,6 +390,7 @@ const P = {
   file:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6',
   lock:'M5 11h14v10H5zM8 11V7a4 4 0 1 1 8 0v4',
   pen:'M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z',
+  edit:'M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z',
   check:'M20 6 9 17l-5-5',
   down:'M12 3v12M7 11l5 5 5-5M4 21h16',
   shield:'M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z',
@@ -462,6 +464,13 @@ const TOOLS = [
     faqs:[['Does rotating reduce quality?','No. Only the page rotation flag changes; the page content is untouched.'],
           ['Can I rotate one page only?','Yes. Click a page thumbnail to select it. With nothing selected, the rotation applies to every page.'],
           ['Will the rotation stick in other apps?','Yes. It is written into the file itself, so any standard PDF reader shows it the same way.']] },
+  { slug:'edit-pdf', name:'Edit PDF', tag:'Add text, draw, highlight', icon:'edit', c:'#0891B2', bg:'#E0F4F8',
+    title:'Edit PDF online — add text, draw and highlight',
+    desc:'Write on a PDF, draw freehand, highlight passages, and delete or reorder pages. Runs in your browser with nothing uploaded.',
+    intro:'Mark up a PDF without buying an editor. Add a note, sign off a figure, highlight a clause, or drop a page you do not need.',
+    faqs:[['Can I edit the text that is already in the PDF?','No. A PDF stores text as positioned glyphs, not editable paragraphs, so changing a word in place is not possible here. You can cover the old text with a highlight and write the correction on top, or use PDF to Word if you need to rewrite the whole document.'],
+          ['Do my edits stay editable afterwards?','No. Text, drawings and highlights are drawn permanently into the page, so they look the same in every reader and cannot be moved later. Keep the original file if you might want to change something.'],
+          ['Which characters can I type?','The standard Latin set. Accented letters outside WinAnsi, and non-Latin scripts such as Arabic, Hindi or Chinese, are not supported by the built-in font and will be reported rather than silently dropped.']] },
   { slug:'image-to-pdf', name:'Image to PDF', tag:'JPG / PNG to PDF', icon:'image', c:'#EC4899', bg:'#FDEAF3',
     title:'Image to PDF — convert JPG and PNG to PDF',
     desc:'Turn photos and screenshots into a single PDF. Choose page size, orientation and margin.',
@@ -1263,6 +1272,100 @@ const ENGINE = {
       $('#ocrDl').onclick = () => saveBlob(new Blob([$('#ocrOut').value], { type: 'text/plain' }), baseName(f.name) + '.txt');
     }
   },
+  'edit-pdf': {
+    accept: 'application/pdf', cta: 'Save edited PDF', drop: 'Choose a PDF',
+    hint: 'Add text, draw, highlight, delete or reorder pages.',
+    defaults: { mode: 'text', color: 'black', size: 'med' },
+    opts: () => '<h3>Tool</h3>' + segGroup('mode', [['text', 'Text'], ['draw', 'Draw'], ['hl', 'Highlight']], ST.opt.mode) +
+      '<div class="field" style="margin-top:12px" data-when="text"><label for="edTxt">Text to place</label>' +
+      '<input id="edTxt" type="text" placeholder="Approved \u2014 24 May" autocomplete="off">' +
+      '<p class="hint">Type it here, then click the page where it should go.</p></div>' +
+      '<h3 style="margin-top:16px">Colour</h3>' + segGroup('color', [['black', 'Black'], ['red', 'Red'], ['blue', 'Blue'], ['yellow', 'Yellow']], ST.opt.color) +
+      '<h3 style="margin-top:16px">Size</h3>' + segGroup('size', [['sm', 'Small'], ['med', 'Medium'], ['lg', 'Large']], ST.opt.size),
+    async onFiles(st) {
+      const pdfjs = await libPdfJs();
+      const doc = await pdfjs.getDocument({ data: new Uint8Array(await st.files[0].arrayBuffer()) }).promise;
+      st.files[0]._pages = doc.numPages; paintFiles();
+      st.extra = { doc: doc, order: Array.from({ length: doc.numPages }, (_, i) => i), at: 0, edits: {} };
+      $('#extra').innerHTML =
+        '<div class="run" style="margin-top:18px;justify-content:space-between">' +
+          '<span style="display:flex;gap:8px;align-items:center">' +
+            '<button class="iconbtn" id="edPrev" aria-label="Previous page">' + ic('up', 15) + '</button>' +
+            '<b id="edLabel" style="font-size:.85rem;color:var(--ink)"></b>' +
+            '<button class="iconbtn" id="edNext" aria-label="Next page">' + ic('chev', 15) + '</button></span>' +
+          '<span style="display:flex;gap:8px;flex-wrap:wrap">' +
+            '<button class="btn btn-ghost btn-sm" id="edUndo">Undo</button>' +
+            '<button class="btn btn-ghost btn-sm" id="edLeft">Move page back</button>' +
+            '<button class="btn btn-ghost btn-sm" id="edRight">Move page on</button>' +
+            '<button class="btn btn-ghost btn-sm" id="edDel">Delete page</button></span></div>' +
+        '<div class="stage" id="edStage"><canvas id="pv"></canvas><canvas class="ov" id="ov"></canvas></div>';
+      $('#edPrev').onclick = () => { if (ST.extra.at > 0) { ST.extra.at--; paintEditor(); } };
+      $('#edNext').onclick = () => { if (ST.extra.at < ST.extra.order.length - 1) { ST.extra.at++; paintEditor(); } };
+      $('#edUndo').onclick = () => {
+        const k = ST.extra.order[ST.extra.at], list = ST.extra.edits[k];
+        if (list && list.length) { list.pop(); drawOverlay(); } else toast('Nothing to undo on this page.');
+      };
+      $('#edLeft').onclick = () => moveEditorPage(-1);
+      $('#edRight').onclick = () => moveEditorPage(1);
+      $('#edDel').onclick = () => {
+        const e = ST.extra;
+        if (e.order.length < 2) return toast('A PDF needs at least one page.');
+        delete e.edits[e.order[e.at]];
+        e.order.splice(e.at, 1);
+        if (e.at >= e.order.length) e.at = e.order.length - 1;
+        paintEditor();
+      };
+      await paintEditor();
+      bindEditorCanvas();
+    },
+    async run(st) {
+      const e = st.extra;
+      if (!e || !e.doc) throw new Error('Load a PDF first.');
+      const L = await libPdfLib();
+      const src = await L.PDFDocument.load(await st.files[0].arrayBuffer(), { ignoreEncryption: true });
+      const font = await src.embedFont(L.StandardFonts.Helvetica);
+      const COL = { black: L.rgb(.07, .09, .15), red: L.rgb(.85, .16, .16), blue: L.rgb(.09, .41, .89), yellow: L.rgb(.96, .72, .05) };
+      const TSZ = { sm: 10, med: 14, lg: 20 }, WSZ = { sm: 1.5, med: 3, lg: 5 };
+      const pages = src.getPages();
+      let ops = 0;
+      Object.keys(e.edits).forEach(k => {
+        const page = pages[+k]; if (!page) return;
+        const { width: W, height: H } = page.getSize();
+        e.edits[k].forEach(op => {
+          ops++;
+          const col = COL[op.color] || COL.black;
+          if (op.t === 'text') {
+            const size = TSZ[op.size];
+            try { page.drawText(op.text, { x: op.x * W, y: (1 - op.y) * H - size * .3, size: size, font: font, color: col }); }
+            catch (err) { throw new Error('"' + op.text + '" uses characters the built-in font cannot draw. Stick to standard Latin letters, numbers and punctuation.'); }
+          } else if (op.t === 'hl') {
+            page.drawRectangle({ x: Math.min(op.x, op.x2) * W, y: (1 - Math.max(op.y, op.y2)) * H,
+              width: Math.abs(op.x2 - op.x) * W, height: Math.abs(op.y2 - op.y) * H, color: col, opacity: .32 });
+          } else if (op.t === 'draw') {
+            const th = WSZ[op.size];
+            for (let i = 1; i < op.pts.length; i++) {
+              page.drawLine({ start: { x: op.pts[i - 1].x * W, y: (1 - op.pts[i - 1].y) * H },
+                end: { x: op.pts[i].x * W, y: (1 - op.pts[i].y) * H }, thickness: th, color: col,
+                lineCap: L.LineCapStyle ? L.LineCapStyle.Round : undefined });
+            }
+          }
+        });
+      });
+      const reordered = e.order.length !== pages.length || e.order.some((v, i) => v !== i);
+      let bytes;
+      if (reordered) {
+        UI.status('Rebuilding the page order\u2026', 70);
+        const out = await L.PDFDocument.create();
+        (await out.copyPages(src, e.order)).forEach(pg => out.addPage(pg));
+        bytes = await out.save();
+      } else bytes = await src.save();
+      const notes = [];
+      if (ops) notes.push(ops + ' edit' + (ops > 1 ? 's' : ''));
+      if (reordered) notes.push(e.order.length + ' pages after reordering');
+      UI.result('Saved', notes.length ? notes.join(' \u00b7 ') : 'No changes were made',
+        [{ name: baseName(st.files[0].name) + '-edited.pdf', blob: new Blob([bytes], { type: 'application/pdf' }) }]);
+    }
+  },
   'esign-pdf': {
     accept: 'application/pdf', cta: 'Place signature and save', drop: 'Choose a PDF', hint: 'Draw or type your signature, then click the page.',
     defaults: { mode: 'draw', size: '24' },
@@ -1299,6 +1402,97 @@ const ENGINE = {
     }
   }
 };
+
+
+/* ---------- PDF editor canvas ---------- */
+function moveEditorPage(d) {
+  const e = ST.extra, j = e.at + d;
+  if (j < 0 || j >= e.order.length) return;
+  const t = e.order[e.at]; e.order[e.at] = e.order[j]; e.order[j] = t;
+  e.at = j; paintEditor();
+}
+async function paintEditor() {
+  const e = ST.extra; if (!e || !e.doc) return;
+  const orig = e.order[e.at];
+  const page = await e.doc.getPage(orig + 1);
+  const base = page.getViewport({ scale: 1 });
+  const vp = page.getViewport({ scale: Math.min(620 / base.width, 1.7) });
+  const cv = $('#pv'); cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+  const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+  await page.render({ canvasContext: cx, viewport: vp }).promise;
+  const ov = $('#ov'); ov.width = cv.width; ov.height = cv.height;
+  e.pw = base.width;
+  $('#edLabel').textContent = 'Page ' + (e.at + 1) + ' of ' + e.order.length + ' (original ' + (orig + 1) + ')';
+  drawOverlay();
+}
+function drawOverlay(temp) {
+  const ov = $('#ov'); if (!ov) return;
+  const cx = ov.getContext('2d'); if (!cx) return;
+  cx.clearRect(0, 0, ov.width, ov.height);
+  const HEX = { black: '#111827', red: '#D92929', blue: '#1668E3', yellow: '#F5B80D' };
+  const TSZ = { sm: 10, med: 14, lg: 20 }, WSZ = { sm: 1.5, med: 3, lg: 5 };
+  const scale = ov.width / (ST.extra.pw || ov.width);
+  const list = (ST.extra.edits[ST.extra.order[ST.extra.at]] || []).concat(temp ? [temp] : []);
+  list.forEach(op => {
+    const col = HEX[op.color] || '#111827';
+    if (op.t === 'text') {
+      cx.fillStyle = col;
+      cx.font = (TSZ[op.size] * scale) + 'px Helvetica, Arial, sans-serif';
+      cx.textBaseline = 'alphabetic';
+      cx.fillText(op.text, op.x * ov.width, op.y * ov.height);
+    } else if (op.t === 'hl') {
+      cx.fillStyle = col; cx.globalAlpha = .32;
+      cx.fillRect(Math.min(op.x, op.x2) * ov.width, Math.min(op.y, op.y2) * ov.height,
+        Math.abs(op.x2 - op.x) * ov.width, Math.abs(op.y2 - op.y) * ov.height);
+      cx.globalAlpha = 1;
+    } else if (op.t === 'draw' && op.pts.length > 1) {
+      cx.strokeStyle = col; cx.lineWidth = WSZ[op.size] * scale;
+      cx.lineCap = 'round'; cx.lineJoin = 'round';
+      cx.beginPath(); cx.moveTo(op.pts[0].x * ov.width, op.pts[0].y * ov.height);
+      op.pts.forEach(p => cx.lineTo(p.x * ov.width, p.y * ov.height));
+      cx.stroke();
+    }
+  });
+}
+function bindEditorCanvas() {
+  const ov = $('#ov'); if (!ov) return;
+  const pos = ev => { const b = ov.getBoundingClientRect(); return { x: (ev.clientX - b.left) / b.width, y: (ev.clientY - b.top) / b.height }; };
+  const push = op => {
+    const k = ST.extra.order[ST.extra.at];
+    (ST.extra.edits[k] = ST.extra.edits[k] || []).push(op);
+    drawOverlay();
+  };
+  let live = null;
+  ov.addEventListener('pointerdown', ev => {
+    const p = pos(ev);
+    if (p.x < 0 || p.x > 1 || p.y < 0 || p.y > 1) return;
+    if (ST.opt.mode === 'text') {
+      const txt = ($('#edTxt') && $('#edTxt').value || '').trim();
+      if (!txt) return toast('Type the text first, then click the page.');
+      push({ t: 'text', x: p.x, y: p.y, text: txt, color: ST.opt.color, size: ST.opt.size });
+      return;
+    }
+    ov.setPointerCapture(ev.pointerId);
+    live = ST.opt.mode === 'draw'
+      ? { t: 'draw', pts: [p], color: ST.opt.color, size: ST.opt.size }
+      : { t: 'hl', x: p.x, y: p.y, x2: p.x, y2: p.y, color: ST.opt.color };
+    drawOverlay(live);
+  });
+  ov.addEventListener('pointermove', ev => {
+    if (!live) return;
+    const p = pos(ev);
+    if (live.t === 'draw') live.pts.push(p); else { live.x2 = p.x; live.y2 = p.y; }
+    drawOverlay(live);
+  });
+  const end = () => {
+    if (!live) return;
+    const ok = live.t === 'draw' ? live.pts.length > 1 : (Math.abs(live.x2 - live.x) > .004 && Math.abs(live.y2 - live.y) > .004);
+    const op = live; live = null;
+    if (ok) push(op); else drawOverlay();
+  };
+  ov.addEventListener('pointerup', end);
+  ov.addEventListener('pointercancel', end);
+}
 
 /* ---------- tool helpers ---------- */
 async function embedCanvasJpg(pdfDoc, canvas, q) {
@@ -1377,6 +1571,7 @@ const HOWTO = {
   'split-pdf': [['Add a PDF', 'Drop in the document you want to break up.'], ['Choose how to split', 'Every page separately, or type a range like 1-3, 7.'], ['Download', 'You get a ZIP for a full split, or one PDF for a range.']],
   'compress-pdf': [['Add a PDF', 'Scans and photo-heavy files shrink the most.'], ['Pick a level', 'Balanced suits email. Strong is for tight upload limits.'], ['Check the saving', 'The result shows old and new size before you download.']],
   'rotate-pdf': [['Add a PDF', 'Thumbnails of every page appear underneath.'], ['Select pages', 'Click the crooked ones, or select none to turn them all.'], ['Rotate and save', 'Choose the angle and download the corrected file.']],
+  'edit-pdf': [['Add a PDF', 'The first page appears as a preview you can draw on.'], ['Pick a tool and mark the page', 'Type text and click to place it, drag to draw or highlight, and step through pages as you go.'], ['Save', 'Delete or reorder pages if you need to, then download the edited file.']],
   'image-to-pdf': [['Add images', 'JPG, PNG or WebP, as many as you like.'], ['Arrange and set the page', 'Reorder with the arrows, then choose page size and margin.'], ['Create the PDF', 'Download one document containing every image.']],
   'pdf-to-image': [['Add a PDF', 'Every page will be rendered separately.'], ['Choose format and resolution', 'PNG for text, JPG for photos; 150 DPI suits most uses.'], ['Download', 'Grab single pages, or take everything as a ZIP.']],
   'pdf-to-word': [['Add a text-based PDF', 'If you cannot select text in a reader, it is a scan — use OCR first.'], ['Convert', 'Text is read page by page and paragraphs are rebuilt.'], ['Open in Word', 'Download the .doc and edit it anywhere.']],
@@ -1457,7 +1652,7 @@ function setMeta(title, desc, path, faqs) {
   set('meta[property="og:description"]', 'content', desc);
   set('meta[name="twitter:title"]', 'content', title);
   set('meta[name="twitter:description"]', 'content', desc);
-  const url = 'https://scanix.app/' + (path ? '#/' + path : '');
+  const url = 'https://scanix.hassantayyabdev.workers.dev/' + (path ? path + '/' : '');
   set('link[rel="canonical"]', 'href', url);
   set('meta[property="og:url"]', 'content', url);
   const old = $('#ld-page'); if (old) old.remove();
@@ -1502,6 +1697,15 @@ function renderRoute(keepScroll) {
 }
 
 /* ---------- global events ---------- */
+// On the prerendered build every route is a real file, so send hash links to the clean URL.
+document.addEventListener('click', e => {
+  if (typeof window.__ROUTE__ === 'undefined' || e.defaultPrevented || e.metaKey || e.ctrlKey || e.button) return;
+  const a = e.target.closest('a[href^="#/"]');
+  if (!a) return;
+  e.preventDefault();
+  const p = a.getAttribute('href').replace(/^#\/?/, '').replace(/\/+$/, '');
+  location.href = '/' + (p ? p + '/' : '');
+}, true);
 document.addEventListener('click', async e => {
   const el = e.target.closest('[data-mv],[data-rm],[data-dl],.seg,.thumb-c,#burger,#subBtn,#cSend,#stage');
   if (!el) return;
