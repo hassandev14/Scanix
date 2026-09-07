@@ -1,0 +1,21 @@
+{
+  "name": "scanix",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "node scripts/copy-pdf-worker.mjs",
+    "test:api": "node worker/api.test.mjs",
+    "admin:create": "node scripts/make-admin.mjs"
+  },
+  "dependencies": {
+    "next": "15.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "3.11.174",
+    "jszip": "3.10.1"
+  }
+}

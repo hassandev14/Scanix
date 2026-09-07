@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scanix",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-28",
+  "observability": { "enabled": true },
+
+  // The exported static site. Serving it from the same worker as the API keeps
+  // the admin session cookie same-origin, so it can be SameSite=Strict.
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+
+  // Create with:  npx wrangler d1 create scanix
+  // then paste the printed database_id here.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "scanix", "database_id": "PASTE_YOUR_D1_DATABASE_ID" }
+  ]
+
+  // Secrets are NOT stored here. Set them once:
+  //   npx wrangler secret put SESSION_SECRET     (32+ random characters)
+  //   npx wrangler secret put DEPLOY_HOOK_URL    (optional, enables "Publish to site")
+}
